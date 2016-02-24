@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="2" errors="0" failures="2" time="0.007" timestamp="2016-02-24T10:21:53">
+		<testcase classname="MadLib" name="should replace verbs" time="0.005">
+			<failure type="" message="TypeError: undefined is not a constructor (evaluating &amp;apos;verbs.includes(expectedVerb)&amp;apos;) in file:///Users/scottyrunyan/Development/code/js-ajax-callbacks-lab-v-000/spec/mad_lib_spec.js (line 16)">
+file:///Users/scottyrunyan/Development/code/js-ajax-callbacks-lab-v-000/spec/mad_lib_spec.js:16:26
+attemptSync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1510:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1498:20
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:306:28
+file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1708:44
+attemptAsync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1520:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1496:28
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1694:21
+file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1708:44
+attemptAsync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1520:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1496:28
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1694:21
+file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:541:83
+attemptAsync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1520:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1496:28
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:548:25
+onload@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/boot.js:172:16			</failure>
+		</testcase>
+		<testcase classname="MadLib" name="should replace nouns" time="0.001">
+			<failure type="" message="TypeError: undefined is not a constructor (evaluating &amp;apos;nouns.includes(expectedNoun)&amp;apos;) in file:///Users/scottyrunyan/Development/code/js-ajax-callbacks-lab-v-000/spec/mad_lib_spec.js (line 30)">
+file:///Users/scottyrunyan/Development/code/js-ajax-callbacks-lab-v-000/spec/mad_lib_spec.js:30:26
+attemptSync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1510:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1498:20
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:306:28
+file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1708:44
+attemptAsync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1520:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1496:28
+next@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1517:40
+complete@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:333:19
+clearStack@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:506:11
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1505:22
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:306:28
+file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1708:44
+attemptAsync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1520:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1496:28
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1694:21
+file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1708:44
+attemptAsync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1520:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1496:28
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1694:21
+file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:541:83
+attemptAsync@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1520:16
+run@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1496:28
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:1485:13
+queueRunnerFactory@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:518:42
+execute@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/jasmine.js:548:25
+onload@file:///Users/scottyrunyan/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/learn-test-1.2.25/lib/learn_test/jasmine/boot.js:172:16			</failure>
+		</testcase>
+	</testsuite>
+</testsuites>
+
