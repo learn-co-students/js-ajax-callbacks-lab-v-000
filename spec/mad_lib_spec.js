@@ -4,7 +4,15 @@ describe("MadLib", function() {
   });
 
   it("should replace verbs", function() {
-    var verbs = ['test', 'drive'];
+    var verbs = ['test', 'drive', 'sit'
+,'run'
+,'jump'
+,'dance'
+,'code'
+,'debug'
+,'fall'
+,'drive'
+,'watch'];
     var get = spyOn($, "get").and.callFake(function(url, success) {
       success(verbs.join('\n'));
       return {fail: function(){}};
@@ -13,12 +21,22 @@ describe("MadLib", function() {
     replaceVerbs();
 
     expectedVerb = $(".verb").first().text();
-    expect(verbs.includes(expectedVerb)).toBe(true)
+    expect(verbs.indexOf(expectedVerb)).not.toBe(-1)
 
   });
 
   it("should replace nouns", function() {
-    var nouns = ['bob', 'joe'];
+    var nouns = ['bob', 'joe', 'store'
+,'street'
+,'hamburger'
+,'mailbox'
+,'fridge'
+,'stove'
+,'bus'
+,'car'
+,'plate'
+,'fork'
+];
 
     spyOn($, "get").and.callFake(function(url, success) {
       success(nouns.join('\n'));
@@ -27,7 +45,7 @@ describe("MadLib", function() {
 
     replaceNouns();
     expectedNoun = $(".noun").first().text();
-    expect(nouns.includes(expectedNoun)).toBe(true)
+    expect(nouns.indexOf(expectedNoun)).not.toBe(-1)
   });
 
 });
