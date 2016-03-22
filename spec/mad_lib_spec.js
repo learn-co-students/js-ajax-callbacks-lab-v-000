@@ -11,8 +11,8 @@ describe("MadLib", function() {
     });
 
     replaceVerbs();
-
     expectedVerb = $(".verb").first().text();
+    debugger;
     expect(verbs.includes(expectedVerb)).toBe(true)
 
   });
