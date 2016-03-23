@@ -1,8 +1,8 @@
 function replaceNouns() {
   $('#random_noun').on("click", function() {
     $.get("noun.html", function(data){
-      var nouns = data.split("\n");
-      nouns.splice(-1,1);
+      var nouns_w_junk = data.split("\n");
+      var nouns = nouns_w_junk.filter(Boolean);
       $('.noun').each(function(index, noun){
         var word = getWord(nouns);
         $(this).text(word);
@@ -21,8 +21,8 @@ function getWord(words) {
 function replaceVerbs() {
   $('#random_verb').on("click", function() {
     $.get("verb.html", function(data){
-      var verbs = data.split("\n");
-      verbs.splice(-1,1);
+      var verbs_w_junk = data.split("\n");
+      var verbs = verbs_w_junk.filter(Boolean);
       $('.verb').each(function(index, verb){
         var word = getWord(verbs);
         $(this).text(word);
