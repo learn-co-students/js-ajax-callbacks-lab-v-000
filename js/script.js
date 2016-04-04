@@ -15,14 +15,15 @@ function replaceVerbs() {
 };
 
 function random(string) {
-  var arr = string.split(",")
+  var arr = string.split("\n")
+  debugger;
   return arr[Math.floor(Math.random()*arr.length)]
 }
 
 $(document).ready(function (){
   // Code here
-  replaceNouns();
-  replaceVerbs();
+  $('#random_noun').click(replaceNouns);
+  $('#random_verb').click(replaceVerbs);
 
 });
 
