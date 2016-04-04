@@ -14,8 +14,6 @@ function replaceNouns() {
 };
 
 function replaceVerbs() {
-
-
   $.get('words.html', function(response) {
     
     var verbs = response.trim().split("\n");
