@@ -25,7 +25,7 @@ function replaceVerbs() {
 $(document).ready(function (){
   // Code here
 
-$('random_noun').click(replaceNouns);
-$('random_verb').click(replaceVerbs);
+$('#random_noun').on('click', replaceNouns);
+$('#random_verb').on('click', replaceVerbs);
 
 });
