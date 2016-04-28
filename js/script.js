@@ -1,43 +1,42 @@
-var nouns;
-var verbs;
-
-function replaceNouns() {
-  $('#random_noun').click(function() {
-    $('.noun').map(function(noun, index) {
-       $(this).text(nouns[Math.floor(Math.random() * nouns.length)])
-        })
-    })
-};
-
-function replaceVerbs() {
-  $('#random_verb').click(function() {
-    $('.verb').each(function(index, verb) {
-      $(this).text(verbs[Math.floor(Math.random() * verbs.length)])
-      })
-  })
-};
-
 
 $(document).ready(function (){
-  
 
-  $.get("html/noun.html")
-    .done(function(data){
-      nouns = data.trim().split("\n")
-    })
-    .fail(function(error) {
-      $('div').append(error['responseText'])
-    })
+  $('#random_noun').click(replaceNouns)
 
-  $.get("html/verb.html")
-    .done(function(data){
-      verbs = data.trim().split("\n")
-    })
-    .fail(function(error) {
-      $('div').append(error['responseText'])
-    })
+  $('#random_verb').click(replaceVerbs)
 
 
-  replaceNouns();
-  replaceVerbs();
 });
+
+
+
+function replaceNouns() {
+  $.get("html/noun.html", function(data) {
+      var nouns = data.trim().split("\n")
+    
+      $('.noun').each(function() {
+        $(this).text(nouns[Math.floor(Math.random() * nouns.length)])
+      })
+
+
+    }).fail(function(error) {
+      $('div').append(error['responseText'])
+    })
+
+};
+
+
+function replaceVerbs() {
+  $.get("html/verb.html", function(data){
+    var verbs = data.trim().split("\n")
+    $('.verb').each(function(index, verb) {
+      $(this).text(verbs[Math.floor(Math.random() * verbs.length)])
+    })
+  }).fail(function(error) {
+    $('div').append(error['responseText'])
+  }) 
+  
+};
+
+
+
