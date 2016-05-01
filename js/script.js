@@ -5,16 +5,20 @@ function replaceNouns() {
     $('.noun').each(function(index) {
       $(this).text(sorted[index]);
     });
+  }).fail(function(error){
+    console.log("Something went wrong: " + error);
   });
 };
 
 function replaceVerbs() {
-  $.get('verb.html', function(data) {
+  $.get('words.html', function(data) {
     var verbs = data.split("\n").filter(v=>v!='');
     sorted = verbs.sort(function() { return 0.5 - Math.random() });
     $('.verb').each(function(index) {
       $(this).text(sorted[index]);
     });
+  }).fail(function(error){
+    console.log("Something went wrong: " + error);
   });
 };
 
