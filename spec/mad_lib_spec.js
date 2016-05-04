@@ -6,7 +6,7 @@ describe("MadLib", function() {
   it("should replace verbs", function() {
     var verbs = ['test', 'drive'];
     var get = spyOn($, "get").and.callFake(function(url, success) {
-      success(verbs.join('\n'));
+      success(verbs.join(','));
       return {fail: function(){}};
     });
 
@@ -22,7 +22,7 @@ describe("MadLib", function() {
     var nouns = ['bob', 'joe'];
 
     spyOn($, "get").and.callFake(function(url, success) {
-      success(nouns.join('\n'));
+      success(nouns.join(',')); //like this better than looking for newlines
       return {fail: function(){}};
     });
 
