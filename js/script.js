@@ -6,6 +6,8 @@ function replaceNouns() {
     $('.noun').each(function(){
       $(this).text(nouns[Math.floor(Math.random()*nouns.length)]);
     });
+  }).fail(function(error){
+    alert("Something went wrong");
   });
 };
 
@@ -16,7 +18,9 @@ function replaceVerbs() {
     $('.verb').each(function(){
       $(this).text(verbs[Math.floor(Math.random()*verbs.length)]);
     });
-  });
+  }).fail(function(error){
+    alert("Something went wrong");
+  };
 };
 
 $(document).ready(function (){
