@@ -17,7 +17,7 @@ function replaceNouns() {
   // }); //. on
 
   $.get('noun.html', function(data) {
-    var nouns = data.trim().split("\n");
+    var nouns = createArrayFrom(data);
     $('.noun').each(function() {
       var random_index = Math.floor(Math.random()*nouns.length);
       var rand_noun = nouns[random_index];
@@ -44,7 +44,7 @@ function replaceVerbs() {
   //   }); // .get .fail
   // }); //. on
   $.get('verb.html', function(data) {
-    var verbs = data.trim().split("\n");
+    var verbs = createArrayFrom(data);
     $('.verb').each(function() {
       var random_index = Math.floor(Math.random()*verbs.length);
       var rand_verb = verbs[random_index];
@@ -54,6 +54,10 @@ function replaceVerbs() {
     alert('The request failed: ' + error.statusText);
   }); //.get .fail
 };
+
+function createArrayFrom(data) {
+  return data.trim().split("\n");
+}
 
 $(document).ready(function (){
   // Code here
