@@ -1,5 +1,6 @@
 function replaceNouns() {
-	getData("noun.html").done(function(data){
+
+	$.get('noun.html', function(data){
 		replaceClass('.noun',  data.trim().split('\n'));
 	}).fail(function(error){
 		console.log("it broke: " + error);
@@ -8,19 +9,13 @@ function replaceNouns() {
 };
 
 function replaceVerbs() {
-	getData("verb.html").done(function(data){
+	$.get('verb.html', function(data){
 		replaceClass('.verb',  data.trim().split('\n'));
 	}).fail(function(error){
 		console.log("it broke: " + error);
 	});
 };
 
-function getData(path){
-	return $.ajax({
-		url: path,
-		type: 'GET'
-	})
-}
 
 function replaceClass(className, arr){
 	$(className).each(function(index, item){
