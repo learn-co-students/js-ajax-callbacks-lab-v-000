@@ -16,16 +16,19 @@ function replaceNouns() {
   //   }); // .get .fail
   // }); //. on
 
-  $.get('noun.html', function(data) {
-    var nouns = createArrayFrom(data);
+  //This function accounts for the empty space in the array
+  $.get('noun.html', function(response) {
+    var nouns = response.split(/\n/);
+    nouns.pop();
+    //debugger;
     $('.noun').each(function() {
-      var random_index = Math.floor(Math.random()*nouns.length);
-      var rand_noun = nouns[random_index];
-      $(this).html(rand_noun);
-    }); //.each
+      var random_index = Math.floor(Math.random() * nouns.length);
+      var random_noun = nouns[random_index];
+      $(this).html(random_noun);
+    });
   }).fail(function(error) {
-    alert('The request failed: ' + error.statusText);
-  }); //.get .fail
+    alert("The request failed " + error.statusText);
+  });
 };
 
 function replaceVerbs() {
@@ -43,16 +46,19 @@ function replaceVerbs() {
   //     console.log('Something went wrong:' + error);
   //   }); // .get .fail
   // }); //. on
-  $.get('verb.html', function(data) {
-    var verbs = createArrayFrom(data);
+  
+  $.get('verb.html', function(response) {
+    var verbs = response.split(/\n/);
+    verbs.pop()
+    //debugger;
     $('.verb').each(function() {
-      var random_index = Math.floor(Math.random()*verbs.length);
-      var rand_verb = verbs[random_index];
-      $(this).html(rand_verb);
-    }); //.each
+      var random_index = Math.floor(Math.random() * verbs.length);
+      var random_verb = verbs[random_index];
+      $(this).html(random_verb);
+    });
   }).fail(function(error) {
-    alert('The request failed: ' + error.statusText);
-  }); //.get .fail
+    alert("The request failed " + error.statusText);
+  });
 };
 
 function createArrayFrom(data) {
