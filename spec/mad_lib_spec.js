@@ -13,7 +13,7 @@ describe("MadLib", function() {
     replaceVerbs();
 
     var expectedVerbs = $(".verb");
-
+    console.log(expectedVerbs[0], expectedVerbs[1]);
     expect(verbs.indexOf($(expectedVerbs[0]).text())).not.toEqual(-1);
     expect(verbs.indexOf($(expectedVerbs[1]).text())).not.toEqual(-1);
   });
