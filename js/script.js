@@ -1,11 +1,7 @@
 function replaceNouns() {
   $.get("noun.html", function(data){
     var nouns = data.trim().split("\n");
-    
-    nouns.forEach(function(index, noun){
-      console.log(index + ": " + noun);
-    });
-    
+
     $(".noun").each(function(index, element){
       var displayIndex = Math.floor(Math.random() * nouns.length);
       $(element).text(nouns[displayIndex]);
@@ -18,10 +14,6 @@ function replaceNouns() {
 function replaceVerbs() {
   $.get("verb.html", function(data){
     var verbs = data.trim().split("\n");
-    
-    verbs.forEach(function(index, verb){
-      console.log(index + ": " + verb);
-    });
     
     $(".verb").each(function(index, element){
       var displayIndex = Math.floor(Math.random() * verbs.length);
