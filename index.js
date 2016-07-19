@@ -4,15 +4,23 @@ function handlebarsSetup() {
   // #user-details-partial is the partial template
 }
 
-$(document).ready(function (){
-  handlebarsSetup()
-});
 
+function search(){
+  $("#search").on('click', function(){
+    var searchTerm = $("#search-terms").val();
+    searchRepositories(searchTerm);
+  })
+}
 
-function searchRepositories(){
-  var search = $('#searchTerms').val();
-  $.get("https://api.github.com/search/repositories?q=" + search, function(response){
+function searchRepositories(searchTerm){
+  $.get("https://api.github.com/search/repositories?q=" + searchTerm, function(response){
     $('#results').html(response);
     console.log(response);
   })
 }
+
+
+$(document).ready(function (){
+  handlebarsSetup()
+  search();
+});
