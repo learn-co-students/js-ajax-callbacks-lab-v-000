@@ -8,9 +8,11 @@ $(document).ready(function (){
   handlebarsSetup()
 });
 
+
 function searchRepositories(){
   var search = $('#searchTerms').val();
   $.get("https://api.github.com/search/repositories?q=" + search, function(response){
     $('#results').html(response);
+    console.log(response);
   })
 }
