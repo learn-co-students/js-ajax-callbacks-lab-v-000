@@ -45,6 +45,17 @@
     <script id="user-details-partial" type="text/x-handlebars-template">
       <div class="userDetails">{{data}}</div>
     </script>
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#each items}}
+
+      <h2><a href="{{ html_url }}">{{ name }}</a></h2>
+
+      {{#each owner}}
+
+      <img src="{{owner.avatar_url}}">
+
+      <a href="{{owner.html_url}}">
+    </script>
 
   </body> <!-- body ---------------------------------------------->
 </html>

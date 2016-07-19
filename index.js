@@ -14,8 +14,8 @@ function search(){
 
 function searchRepositories(searchTerm){
   $.get("https://api.github.com/search/repositories?q=" + searchTerm, function(response){
-    $('#results').html(response);
-    console.log(response);
+    const template = Handlebars.compile($('#results-template').html())
+      $('#results').html(template(response))
   })
 }
 
