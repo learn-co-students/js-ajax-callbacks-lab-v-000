@@ -25,12 +25,10 @@ function displayError(){
   $('#errors').html("I'm sorry, there's been an error. Please try again.");
 }
 
-function showCommits(){
-  var commitsUrl = $('.linkToCommits').attr("url");
-//  var owner = $('.linkToCommits').attr("owner");
-//  var repository = $('.linkToCommits').attr("repo");
-//  $.get('https://api.github.com/repos/' + owner + '/' + repository + '/commits', function(response){
-  $.get('https://api.github.com/repos/' + commitsUrl, function(response){
+function showCommits(element){
+  var owner = element.dataset.owner
+  var repo = element.dataset.repository
+  $.get('https://api.github.com/repos/' + owner + '/' + repo + '/commits', function(response){
     const template = Handlebars.compile($('#show-commits-template').html());
     $('#details').html(template(response))
   })

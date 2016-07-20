@@ -57,7 +57,7 @@
 
         <img src="{{ owner.avatar_url }}" style="width:128px;height:128px;"></img>
 
-        <li><a href="#" onclick="showCommits()" class="linkToCommits" owner="{{ owner.login }}" repo-"{{name}}" url="{{{ owner.login }}}/{{{ name }}}/commits">Commits</a></li>
+        <li><a href="#" data-repository="{{ name }}" data-owner="{{ owner.login }}" onclick="showCommits(this)">Show Commits</a></li>
       </ul>
 
       {{/each}}
