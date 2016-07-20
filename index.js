@@ -27,10 +27,10 @@ function displayError(){
 
 function showCommits(){
   var commitsUrl = $('.linkToCommits').attr("url");
-//  var owner = $('.linkToCommits').attr("owner");
-//  var repo = $('.linkToCommits').attr("repo");
-//  $.get('https://api.github.com/repos/' + owner + '/' + repo + '/commits', function(response){
-  $.get('https://api.github.com/repos/' + commitsUrl, function(response){
+  var owner = $('.linkToCommits').attr("owner");
+  var repository = $('.linkToCommits').attr("repo");
+  $.get('https://api.github.com/repos/' + owner + '/' + repository + '/commits', function(response){
+//  $.get('https://api.github.com/repos/' + commitsUrl, function(response){
     const template = Handlebars.compile($('#show-commits-template').html());
     $('#details').html(template(response))
   })
