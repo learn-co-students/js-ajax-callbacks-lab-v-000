@@ -48,13 +48,19 @@
     <script id="results-template" type="text/x-handlebars-template">
       {{#each items}}
 
-      <h2><a href="{{ html_url }}">{{ name }}</a></h2>
+      <h4><a href="{{ html_url }}">{{ name }}</a></h4>
 
-      {{#each owner}}
+      <ul>
+        <li><p>{{description}}</p></li>
 
-      <img src="{{owner.avatar_url}}">
+        <li><h6>By: <a href="{{ owner.html_url }}">{{ owner.login }}</a></h6></li>
 
-      <a href="{{owner.html_url}}">
+        <img src="{{ owner.avatar_url }}" style="width:128px;height:128px;"></img>
+
+        <li><a href="#" class="linkToCommits" url="{{{ owner.login }}}/{{{ name }}}/commits">Commits</a></li>
+      </ul>
+
+      {{/each}}
     </script>
 
   </body> <!-- body ---------------------------------------------->
