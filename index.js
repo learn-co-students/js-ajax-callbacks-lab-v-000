@@ -26,13 +26,14 @@ function displayError(){
 }
 
 function showCommits(){
-  $('.linkToCommits').on('click', function(){
-    console.log("hello");
-//    var test = $(this).attr("url")
-//    console.log(test);
+  var commitsUrl = $('.linkToCommits').attr("url");
+//  var owner = $('.linkToCommits').attr("owner");
+//  var repo = $('.linkToCommits').attr("repo");
+//  $.get('https://api.github.com/repos/' + owner + '/' + repo + '/commits', function(response){
+  $.get('https://api.github.com/repos/' + commitsUrl, function(response){
+    const template = Handlebars.compile($('#show-commits-template').html());
+    $('#details').html(template(response))
   })
-//  $.get('https://api.github.com/repos/' + owner + repo + '/commits')
-
 }
 
 

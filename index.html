@@ -57,9 +57,19 @@
 
         <img src="{{ owner.avatar_url }}" style="width:128px;height:128px;"></img>
 
-        <li><a href="#" class="linkToCommits" url="{{{ owner.login }}}/{{{ name }}}/commits">Commits</a></li>
+        <li><a href="#" onclick="showCommits()" class="linkToCommits" owner="{{ owner.login }}" repo-"{{name}}" url="{{{ owner.login }}}/{{{ name }}}/commits">Commits</a></li>
       </ul>
 
+      {{/each}}
+    </script>
+
+    <script id="show-commits-template" type="text/x-handlebars-template">
+      {{#each this}}
+      <ul>
+        <li><a href="{{author.html_url}}">{{author.login}}</a></li>
+        <li><img src="{{ author.avatar_url }}" style="width:128px;height:128px;"/></li>
+        <li>{{sha}}</li>
+      </ul>
       {{/each}}
     </script>
 
