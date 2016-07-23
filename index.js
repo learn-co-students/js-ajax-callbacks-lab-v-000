@@ -1,10 +1,5 @@
-var response,
-    page; // probably not needed
-
 function handlebarsSetup() {
   //put any handlebars setup in here
-  
-
   Handlebars.registerPartial("userDetails", $("#details").html());
   
 }
@@ -18,29 +13,26 @@ function searchRepositories() {
       searchTerms = input.value,
       url         = "https://api.github.com/search/repositories",
       html        = $("#results-template").html(),
-      template    = Handlebars.compile(html),
-      context     = {name: "Testing"},
-      page        = template(context);
+      template    = Handlebars.compile(html);
 
   $.get(url +'?q='+ searchTerms, function(response) {
-
-    debugger;
+    
     if (response != null) {
-      // document.getElementById('results').innerHTML = template(response);
       $("#results").html(template(response));
-      $('#results').click(function () {
-        showCommits(response);
-      });
     } else {
       displayError();
     };
   });
-    return results;
 }
 
-function showCommits(e) {
-  var source = $("#").html();
-  e.items[0].git_commits_url
+function showCommits(element) {
+  var url       = "https://api.github.com/repos/" + element.dataset.owner + "/" + element.dataset.repository + "/commits";
+  var template  = Handlebars.compile($("#commits-template").html());
+
+  $.get(url, function(response) {
+    $("#details").html(template(response));
+  })
+
 }
 
 function displayError() {

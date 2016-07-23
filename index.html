@@ -52,16 +52,28 @@
     <div class="userDetails">
       {{> userDetails }}
     </div>
-  </script>
-  
+  </script> 
+
   <script id="results-template" type="text/x-handlebars-template">
-    <ul>
-      <li>{{name}}</li>
-      <li>{{description}}</li>
-      <li><a href="{{html_url}}">{{html_url}}</a></li>
-      <li>{{owner.login}}</li>
-      <li><img src="{{avatar_url}}" id="git-avatar"></li>
-      <li><a href="{{owner.html_url}}">{{owner.html_url}}</a></li>
-    </ul>
+    <div>
+      {{# each items}}
+      <h2>{{name}}</h2>
+      <img src="{{avatar_url}}" id="git-avatar">
+      <h3>Show Commits <a href="#"data-repository="{{ name }}" data-owner="{{ owner.login }}" onclick="showCommits(this)" >https://api.github.com/repos/{{owner.login}}/{{name}}</a></h3>
+      <p>{{description}}</p>
+
+      {{/each}}
+    </div>
   </script>
+
+  <script id="commits-template" type="text/x-handlebars-template">
+  {{# each this }}
+    <div>
+        <h2><a href="{{author.html_url}}">{{author.login}}</h2>
+        <p>{{sha}}</p>
+        <img src="{{avatar_url}}" id="git-avatar">
+    </div>
+  {{/each}}
+  </script>
+
 </html>
