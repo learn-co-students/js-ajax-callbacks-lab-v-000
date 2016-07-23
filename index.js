@@ -1,15 +1,12 @@
+var response,
+    page; // probably not needed
+
 function handlebarsSetup() {
   //put any handlebars setup in here
-  Handlebars.registerPartial("userDetails", $("#details").html());
-}
+  
 
-function Item(attributes) {
-  this.name         = attributes.name;
-  this.description  = attributes.description;
-  this.html_url     = attributes.html_url;
-  this.owner_login  = attributes.owner.login;
-  this.avatar       = attributes.avatar_url;
-  this.owner_url    = attributes.owner.html_url
+  Handlebars.registerPartial("userDetails", $("#details").html());
+  
 }
 
 $(document).ready(function (){
@@ -19,31 +16,33 @@ $(document).ready(function (){
 function searchRepositories() {
   var input       = document.getElementById('searchTerms'),
       searchTerms = input.value,
-      url         = "https://api.github.com/search/repositories";
+      url         = "https://api.github.com/search/repositories",
+      html        = $("#results-template").html(),
+      template    = Handlebars.compile(html),
+      context     = {name: "Testing"},
+      page        = template(context);
 
-  $.get(url +'?utf8=✓&q='+ searchTerms, function(response) {
-    var html      = $("#results").html();
-    var template  = Handlebars.compile(html);
+  $.get(url +'?q='+ searchTerms, function(response) {
 
-    debugger;
-
-  if (response != null) {
-    $("#results").append(template(response));
-    // document.getElementById('results').innerHTML = results;
-    $('#results').click(function () {
-    showCommits();
-    });
-  } else {
-    displayError();
+    if (response != null) {
+      // document.getElementById('results').innerHTML = template(response);
+      $("#results").html(template(response));
+      $('#results').click(function () {
+        showCommits(response);
+      });
+    } else {
+      displayError();
     };
   });
-  
     return results;
 }
 
-function showCommits() {
+function showCommits(e) {
+  var source = $("#").html();
+  e.items[0].git_commits_url
 }
 
 function displayError() {
   document.getElementById('errors').innerHTML = "I'm sorry, there's been an error. Please try again.";
 }
+

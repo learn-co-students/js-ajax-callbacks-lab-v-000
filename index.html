@@ -18,47 +18,50 @@
       }
     </style>
 
-    <script type="text/javascript">
-    window.onload = searchRepositories();
-
-    var a = document.getElementById("search");
-
-
-    </script>
+    
   </head>
   <body>
     <main id="main">
-      <div id="errors"></div>
+      <form>
+        <label for="searchTerms">Search Terms</label>
+        <input type="text" id="searchTerms">
+      </form>
+        <a onclick="searchRepositories();" href="#" id="Search">Search</a>
+      <div id="errors"></div> 
     </main>
     <div class="flexbox-container">
       <div>
-        <h3>Repositories</h3>
-        <div id="results" class="results-template">
-          <ul>
-            <li>{{name}}</li>
-            <li>{{description}}</li>
-            <li><a href="{{html_url}}">{{html_url}}</a></li>
-            <li>{{owner.login}}</li>
-            <li><img src="{{avatar_url}}" id="git-avatar"></li>
-            <li><a href="{{owner.html_url}}">{{owner.html_url}}</a></li>
-            <!-- Also include repository owner login, repository owner avatar as an image, and a link to the owner's profile page. -->
-          </ul>
-        </div>
 
+        <h3>Repositories</h3>
+          <div id="results">
+          </div>
       </div>
       <div>
         <h3>Details</h3>
-        <div id="details"></div>
+        <div id="details">
+        </div>
       </div>
     </div>
-    <form>
-    <label for="searchTerms">Search Terms</label>
-    <input name="searchTerms" type="text" id="searchTerms">
-    
-    <a onclick="searchRepositories();" href="javascript:void(0);" title="Search">Search</a>
 
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
   </body>
+
+  <script id="user-details-partial" type="text/x-handlebars-template">
+    <div class="userDetails">
+      {{> userDetails }}
+    </div>
+  </script>
+  
+  <script id="results-template" type="text/x-handlebars-template">
+    <ul>
+      <li>{{name}}</li>
+      <li>{{description}}</li>
+      <li><a href="{{html_url}}">{{html_url}}</a></li>
+      <li>{{owner.login}}</li>
+      <li><img src="{{avatar_url}}" id="git-avatar"></li>
+      <li><a href="{{owner.html_url}}">{{owner.html_url}}</a></li>
+    </ul>
+  </script>
 </html>
