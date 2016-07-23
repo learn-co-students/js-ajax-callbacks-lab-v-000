@@ -24,6 +24,7 @@ function searchRepositories() {
 
   $.get(url +'?q='+ searchTerms, function(response) {
 
+    debugger;
     if (response != null) {
       // document.getElementById('results').innerHTML = template(response);
       $("#results").html(template(response));
