@@ -19,6 +19,9 @@
     </style>
   </head>
   <body>
+    <label for="searchTerms">GitHub repo name:</label>
+    <input type="text" id ="searchTerms">
+    <a href="#" class="search" onclick="searchRepositories()">Search Repositories</a>
     <main id="main">
       <div id="errors"></div>
     </main>
@@ -35,5 +38,28 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#each items}}
+      <h1><a href="{{ html_url }}">{{ name }}</a></h1>
+      <p><a href="#" data-repository="{{ name }}" data-owner="{{ owner.login }}" onclick="showCommits(this)">Show Commits</a></p>
+      <p>{{ description }}</p>
+      <div>{{> userDetails owner }}</div>
+      <hr>
+      {{/each}}
+    </script>
+    <script id="commits-template" type="text/x-handlebars-template">
+      <ul>
+      {{#each this}}
+        <li>
+          <h2>{{ commit.message }}</h2>
+          <p>{{ sha }}</p>
+          <div>{{> userDetails author }}</div>
+        </li>
+      {{/each }}
+      </ul>
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <a href="{{ url }}"><img src="{{ avatar_url }}"><h3>{{ login }}</h3></a>
+    </script>
   </body>
 </html>
