@@ -29,6 +29,6 @@ function showCommits(repoData) {
     const template = Handlebars.compile($('#commits-template').html())
     $('#details').html(template(data))
   }).fail(error => {
-    displayError()
+    displayError();
   })
 }
