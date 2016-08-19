@@ -4,6 +4,7 @@ function handlebarsSetup() {
 }
 
 function searchRepositories() {
+  $("a#search").click(function() {
     const searchTerms = $("#searchTerms").val();
     const baseUrl = "https://api.github.com/search/repositories?q="
     const url = baseUrl + searchTerms
@@ -12,6 +13,7 @@ function searchRepositories() {
       const template = Handlebars.compile($("#results-template").html());
       $('#results').html(template(data));
     }).fail(displayError());
+  });
 }
 
 function displayError() {
@@ -20,4 +22,7 @@ function displayError() {
 
 $(document).ready(function (){
   handlebarsSetup()
+  searchRepositories()
 });
+
+
