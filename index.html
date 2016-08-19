@@ -22,18 +22,45 @@
     <main id="main">
       <div id="errors"></div>
     </main>
-    <div class="flexbox-container">
-      <div>
-        <h3>Repositories</h3>
-        <div id="results"></div>
-      </div>
-      <div>
-        <h3>Details</h3>
-        <div id="details"></div>
-      </div>
-    </div>
+
+    <input type="text" id="searchTerms">  
+    <a href="#" id="search" onClick="searchRepositories()">Search Repositories</a>
+
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
+    <div class="flexbox-container">
+
+      <div>
+        <h3>Repositories</h3>
+        <div id="results"></div>
+          <script id="results-template" type="text/x-handlebars-template">
+          {{#each items }}
+            <h4>Repository name: <a href = "{{html_url}}"> {{name}} </a></h4>
+            <strong> Description:</strong> {{description}}
+            {{> userDetails owner }} <br></br>
+            <a href="#" id="showCommits" data-repository= "{{name}}" data-owner="{{owner.login}}" onClick="showCommits(this)">Show Commits</a>
+            <hr>
+            {{/each}}
+          </script>        
+        </div>
+      <div>
+        <h3>Details</h3>
+        <div id="details"></div>
+        <script id="details-template" type="text/x-handlebars-template">
+          {{#each this }}
+            <h4>SHA: {{sha}}</h4>
+            <strong> Message:</strong> {{commit.message}}
+            {{> userDetails author }}
+            <hr>
+            {{/each}}
+        </script>
+      </div>
+    </div>
+      <script id="user-details-partial" type="text/x-handlebars-template">
+        <h4><a href="{{ url }}">{{ login }}</a></h4>
+        <img width="32px" height="32px" src="{{ avatar_url }}"> 
+      </script>
   </body>
 </html>
