@@ -17,23 +17,78 @@
         margin-right: 20px;
       }
     </style>
+
   </head>
   <body>
     <main id="main">
+      <!-- Create a "Search Repositories" link that calls a searchRepositories function on click -->
+      <!-- takes the value of a searchTerms text input and queries the Github repository search API -->
+      <input type="text" id="searchTerms">
+      <a href="#" id="search" onClick="searchRepositories()">Search Repositories</a>
+
+      <!-- Handle errors on each API call. If $.get fails, call a function displayError -->
+      <!-- and display "I'm sorry, there's been an error. Please try again." in the errors div -->
       <div id="errors"></div>
+
     </main>
+
     <div class="flexbox-container">
+
       <div>
         <h3>Repositories</h3>
+        <!-- Display the collection of repositories inside the results div -->
         <div id="results"></div>
       </div>
+
       <div>
         <h3>Details</h3>
         <div id="details"></div>
       </div>
+
     </div>
+
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
+    <!-- Use Handlebars templates to render your results -->
+    <!-- instead of building your HTML in your JavaScript functions. -->
+
+    <!-- Include repository name, description, and a link to the html url -->
+    <!-- Also include repository owner login, repository owner avatar as an image -->
+    <!-- and a link to the owner's profile page -->
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#items}}
+        <h2>Repository name: <a href = "{{html_url}}"> {{name}} </a></h2>
+        <h3>Description</h3>
+        <p>{{description}}</p>
+        {{> userDetails owner }} <br>
+
+        <!-- Add a "Show Commits" link to each repository result -->
+        <!-- that will call a showCommits function that gets the repository's commitss -->
+        <!-- from the Github API and display them in the details div. -->
+        <a href="#" id="showCommits" data-repository= "{{name}}" data-owner="{{owner.login}}" onClick="showCommits(this)">Show Commits</a>
+      {{/items}}
+    </script>
+
+    <!-- For each commit, list the SHA, the author, the author's login -->
+    <!-- and the author's avatar as an image.-->
+    <script id="details-template" type="text/x-handlebars-template">
+      {{#this}}
+        <fieldset>
+          <h4>SHA: {{sha}}</h2>
+           <h2>Message</h2>
+           <p>{{commit.message}}</p>
+          {{> userDetails author }}
+        </fieldset>
+        <br>
+      {{/this}}
+    </script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <h4><a href="{{ url }}">{{ login }}</a></h4>
+      <img width="45px" height="45px" src="{{ avatar_url }}">
+    </script>
+
   </body>
 </html>
