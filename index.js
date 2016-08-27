@@ -13,7 +13,8 @@ function searchRepositories(event) {
   var search = $('#searchTerms').val()
   var url = 'https://api.github.com/search/repositories?q=' + search
   $.get(url, data => {$('#results').html(Handlebars.compile($('#results-template').html())(data))})
-    .fail(error => {displayError()})
+    .fail(function(error)
+      {displayError()});
 }
 
 function showCommits(repoLink){
