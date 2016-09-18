@@ -21,17 +21,60 @@
   <body>
     <main id="main">
       <div id="errors"></div>
+      <div>
+        <form action="#">
+          <input type="text" id="searchTerms" name="search" placeholder="Search">
+        </form>
+        <a href="#" id="search" onclick="searchRepositories()">Search Repositories</a>
+      </div>
     </main>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div class="entry">
+        <h1>{{title}}</h1>
+        <div class="body">
+          {{body}}
+        </div>
+      </div>
+    </script>
+
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
         <div id="results"></div>
+
       </div>
       <div>
         <h3>Details</h3>
         <div id="details"></div>
       </div>
     </div>
+
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#each items}}
+        <h4><a href="{{html_url}}">{{name}}</a></h4>
+        <p>{{description}}</p>
+        <a href="#" repo-name="{{name}}" owner={{owner.login}} onclick="showCommits(this)">Show Commits</a>
+        <br />
+        <div>
+          {{> userDetails owner}}
+        </div>
+        <hr>
+      {{/each}}
+    </script>
+
+    <script id="commits-template" type="text/x-handlebars-template">
+      {{#each this}}
+      <h4>{{sha}}</h4>
+      <div>
+        {{> userDetails author}}
+      </div>
+      {{/each}}
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <span><img src="{{avatar_url}}" alt="Owner Image" height="30 px">
+      <a href="{{html_url}}">{{login}}</a></span>
+    </script>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
