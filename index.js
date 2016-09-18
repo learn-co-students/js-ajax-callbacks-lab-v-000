@@ -16,7 +16,6 @@ function showCommits(x){
   var repo = x['attributes']['repo-name']['value']
   var owner = x['attributes']['owner']['value']
 
-  debugger;
   var url = `https://api.github.com/repos/${owner}/${repo}/commits`
 
   $.get(url, function(response){
