@@ -13,8 +13,13 @@ function displayError(){
 }
 
 function showCommits(x){
-  var repo = x['attributes']['repo-name']['value']
-  var owner = x['attributes']['owner']['value']
+  // For the real world
+  // var repo = x['attributes']['repo-name']['value'];
+  // var owner = x['attributes']['owner']['value'];
+
+  // For Tests
+  var repo = x['dataset']['repository'];
+  var owner = x['dataset']['owner'];
 
   var url = `https://api.github.com/repos/${owner}/${repo}/commits`
 
