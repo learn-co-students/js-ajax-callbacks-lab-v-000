@@ -14,7 +14,6 @@ function searchRepositories() {
     var search = $('#searchTerms').val();
 
     $.get('https://api.github.com/search/repositories?q=${search}', function(response){
-        var requests = response;
         var html = template(response.items);
         $('#results').append(html);
     }).fail(function(error) {
