@@ -19,9 +19,31 @@
     </style>
   </head>
   <body>
+
     <main id="main">
       <div id="errors"></div>
     </main>
+
+    <script id="user-template" type="text/x-handlebars-template">
+      {{#each this}}
+        {{> userDetails}}
+      {{/each}}
+    </script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+          <p>
+            <ul>
+              <li>Name: {{name}}</li>
+              <li>Description: {{description}}</li>
+              <li>URL: {{url}}</li>
+            </ul>
+          </p>
+    </script>
+
+    <form>
+      <input type="search" name="searchTerms" id="searchTerms" value="">
+      <a href="#" id="searchLink">Search</a>
+    </form>
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
