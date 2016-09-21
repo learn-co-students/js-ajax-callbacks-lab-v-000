@@ -31,13 +31,25 @@
     </script>
 
     <script id="user-details-partial" type="text/x-handlebars-template">
-          <p>
-            <ul>
-              <li>Name: {{name}}</li>
-              <li>Description: {{description}}</li>
-              <li>URL: {{url}}</li>
-            </ul>
-          </p>
+      {{#if commits_url}}
+        <p>
+          <ul>
+            <li>Name: {{name}}</li>
+            <li>Description: {{description}}</li>
+            <li>URL: {{url}}</li>
+            <li>Commits: <a href=#>{{commits_url}}</a></li>
+          </ul>
+        </p>
+        {{else}}
+        <p>
+          <ul>
+            <li>Name: {{name}}</li>
+            <li>Description: {{description}}</li>
+            <li>URL: {{url}}</li>
+            <li>Commits: <a href=#>{{commits_url}}</a></li>
+          </ul>
+        </p>
+        {{/if}}
     </script>
 
     <form>

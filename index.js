@@ -6,23 +6,34 @@ function handlebarsSetup() {
 
 $(document).ready(function (){
   handlebarsSetup();
-  searchRepositories();
+  searchHandler();
 });
 
-function searchRepositories() {
+function searchHandler() {
   $('#searchLink').on('click', function(){
-    var search = $('#searchTerms').val();
+    searchRepositories();
+  })
+}
 
-    $.get('https://api.github.com/search/repositories?q=${search}', function(response){
+function searchRepositories() {
+    var search = "https://api.github.com/search/repositories?q="+ $("#searchTerms").val()
+    $.get(search, function(response){
+      
         var html = template(response.items);
         $('#results').append(html);
     }).fail(function(error) {
       displayError();
     })
-  })
 };
 
 function showCommits() {
+  var commits =
+  $.get(search, function(response){
+      var html = template(response.items);
+      $('#results').append(html);
+  }).fail(function(error) {
+    displayError();
+  })
 }
 
 function displayError() {
