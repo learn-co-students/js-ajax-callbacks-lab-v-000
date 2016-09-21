@@ -37,16 +37,17 @@
             <li>Name: {{name}}</li>
             <li>Description: {{description}}</li>
             <li>URL: {{url}}</li>
-            <li>Commits: <a href=#>{{commits_url}}</a></li>
+            <li>Commits: <a href="#" onclick="showCommits('{{url}}')">{{commits_url}}</a></li>
           </ul>
         </p>
         {{else}}
         <p>
           <ul>
-            <li>Name: {{name}}</li>
-            <li>Description: {{description}}</li>
+            <img src='{{author.avatar_url}}'>
+            <li>Author: {{commit.author.name}}</li>
+            <li>Author Login: {{author.login}}</li>
+            <li>SHA: {{sha}}</li>
             <li>URL: {{url}}</li>
-            <li>Commits: <a href=#>{{commits_url}}</a></li>
           </ul>
         </p>
         {{/if}}
