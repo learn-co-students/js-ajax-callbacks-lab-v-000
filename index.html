@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ajax Lab</title>
+<head>
+  <title>Ajax Lab</title>
 
-    <style>
-      .flexbox-container {
-        display: -ms-flex;
-        display: -webkit-flex;
-        display: flex;
-      }
-      .flexbox-container > div {
-        width: 50%;
-        padding: 10px;
-      }
-      .flexbox-container > div:first-child {
-        margin-right: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <main id="main">
-      <div id="errors"></div>
-    </main>
-    <div class="flexbox-container">
-      <div>
-        <h3>Repositories</h3>
-        <div id="results"></div>
-      </div>
-      <div>
-        <h3>Details</h3>
-        <div id="details"></div>
-      </div>
+  <style>
+    .flexbox-container {
+      display: -ms-flex;
+      display: -webkit-flex;
+      display: flex;
+    }
+    .flexbox-container > div {
+      width: 50%;
+      padding: 10px;
+    }
+    .flexbox-container > div:first-child {
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <main id="main">
+    <div id="errors"></div>
+    <div class="search">
+      <input type="text" id="searchTerms">
+      <a href="PleaseEnableJavascript.html" id="searchRepositories" title="Enter your search terms" onclick="searchRepositories(); return false;">Search Repositories</a>
     </div>
-    <script src="jquery-3.1.0.min.js"></script>
-    <script src="handlebars.js"></script>
-    <script src="index.js"></script>
-  </body>
+  </main>
+
+  <div class="flexbox-container">
+    <div>
+      <h3>Repositories</h3>
+      <script id='results-handlebars-template' type='text/x-handlebars-template'>
+        <div id="results">
+          {{ #each items }}
+            <h4>{{ name }}</h4>
+            <p>{{ description }}</p>
+            <a href="{{ html_url }}">Link</a>
+          {{ /each }}
+        </div>
+      </script>
+    </div>
+    <div>
+      <h3>Details</h3>
+      <script id='commits-handlebars-template' type='text/x-handlebars-template'>
+        <div id="details">
+          {{ #each items }}
+          {{ }}
+        </div>
+      </script>
+    </div>
+  </div>
+  <script src="jquery-3.1.0.min.js"></script>
+  <script src="handlebars.js"></script>
+  <script src="index.js"></script>
+</body>
 </html>
