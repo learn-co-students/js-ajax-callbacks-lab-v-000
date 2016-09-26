@@ -14,7 +14,7 @@ function searchRepositories() {
   });
 }
 
-
+function 
 
 $(document).ready(function (){
   handlebarsSetup();
