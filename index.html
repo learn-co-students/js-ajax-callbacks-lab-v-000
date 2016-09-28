@@ -22,6 +22,10 @@
     <main id="main">
       <div id="errors"></div>
     </main>
+    <form>
+      <input type="text" id="searchTerms">
+      <input type="submit" value="Search Repositories">
+    </form>
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
@@ -29,11 +33,37 @@
       </div>
       <div>
         <h3>Details</h3>
-        <div id="details"></div>
+        <div id="details">          
+        </div>
       </div>
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#each items}}
+        <h3>{{name}}</h3>
+        <ul>
+          <li>{{description}}</li>
+          <li><a href="{{url}}">{{url}}</a></li>
+          <div>{{> userDetails owner }}</div>
+          <li><a href="{{owner.url}}">{{owner.url}}</a></li>
+          <li><a class="commits-link" href="https://api.github.com/repos/{{full_name}}/commits">Show Commits</a></li>
+        </ul>
+      {{/each}}
+    </script>
+    <script id="commits-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <ul>
+          <li>{{sha}}</li>
+          <li>{{commit.author.name}}</li>          
+          <div>{{> userDetails author }}</div>
+        </ul>
+      {{/each}}
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <li><a href="{{url}}">{{ login }}</a></li>
+      <li><img src="{{avatar_url}} alt="{{name}}" width="125""></li>
+    </script>
   </body>
 </html>
