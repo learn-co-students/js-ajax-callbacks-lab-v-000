@@ -4,6 +4,10 @@
     <title>Ajax Lab</title>
 
     <style>
+      img {
+        height: 20px;
+        width: 20px;
+      }
       .flexbox-container {
         display: -ms-flex;
         display: -webkit-flex;
@@ -18,22 +22,50 @@
       }
     </style>
   </head>
+
   <body>
     <main id="main">
-      <div id="errors"></div>
+      <input type="text" id="searchTerms">
+      <a href="#" onclick="searchRepositories()" id="search">Search Repositories</a>
+      <div id="errors">
+      </div>
     </main>
+
     <div class="flexbox-container">
-      <div>
+      <div> <!-- unnamed -->
         <h3>Repositories</h3>
-        <div id="results"></div>
-      </div>
-      <div>
+        <div id="results">
+        </div> <!-- results -->
+      </div> <!-- unnamed -->
+      <div> <!-- unnamed2 -->
         <h3>Details</h3>
-        <div id="details"></div>
-      </div>
-    </div>
+        <div id="details">
+        </div> <!-- details -->
+      </div> <!-- unnamed2 -->
+    </div> <!-- flexbox container -->
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#each items}}
+        <a href="{{html_url}}">{{name}}</a>
+        <a href="#" data-repository="{{name}}" data-owner="{{owner.login}}" onclick="showCommits(this)">Show Commits</a>
+        {{description}}
+        {{> userDetails owner}}
+      {{/each}}
+    </script>
+
+    <script id="details-template" type="text/x-handlebars-template">
+        {{#each this}}
+            {{sha}}
+            {{commit.message}}
+            {{> userDetails author}}
+        {{/each}}
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <a href="{{ url }}">{{ login }}</a>
+      <img src="{{ avatar_url }}">
+    </script>
   </body>
 </html>
