@@ -52,7 +52,7 @@
         <a href="{{html_url}}">{{name}}</a>
         <a href="#" data-repository="{{name}}" data-owner="{{owner.login}}" onclick="showCommits(this)">Show Commits</a>
         {{description}}
-        {{userDetails owner}}
+        {{> userDetails owner}}
       {{/each}}
     </script>
 
@@ -60,7 +60,7 @@
         {{#each this}}
             {{sha}}
             {{commit.message}}
-            {{userDetails author}}
+            {{> userDetails author}}
         {{/each}}
     </script>
     <script id="user-details-partial" type="text/x-handlebars-template">

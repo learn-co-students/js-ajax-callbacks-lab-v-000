@@ -4,7 +4,7 @@ $(document).ready(function (){
 
 function handlebarsSetup() {
   //put any handlebars setup in here
-  Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
+  Handlebars.registerPartial("userDetails", $("#user-details-partial").html());
 }
 
 // provided code above
