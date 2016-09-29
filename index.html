@@ -22,12 +22,13 @@
       }
     </style>
   </head>
-  <body>
 
+  <body>
     <main id="main">
       <input type="text" id="searchTerms">
       <a href="#" onclick="searchRepositories()" id="search">Search Repositories</a>
-      <div id="errors"></div>
+      <div id="errors">
+      </div>
     </main>
 
     <div class="flexbox-container">
@@ -45,39 +46,22 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
     <script id="results-template" type="text/x-handlebars-template">
-      <table>
-        <tr>
-          <th>repo name</th>
-          <th>description</th>
-          <th>link</th>
-          <th>owner</th>
-        </tr>
-        {{#each items}}
-          <tr>
-            <td><a href="{{html_url}}">{{name}}</a></td>
-            <td>{{description}}</td>
-            <td>{{userDetails owner}}</td>
-            <td><a href="#" data-repository="{{name}}" data-owner="{{owner.login}}" onclick="showCommits(this)">Show Commits</a></td>
-          </tr>
-        {{/each}}
-      </table>
+      {{#each items}}
+        <a href="{{html_url}}">{{name}}</a>
+        <a href="#" data-repository="{{name}}" data-owner="{{owner.login}}" onclick="showCommits(this)">Show Commits</a>
+        {{description}}
+        {{userDetails owner}}
+      {{/each}}
     </script>
-    <script type="text/x-handlebars-template" id="details-template">
-      <table>
-        <tr>
-          <th>SHA</th>
-          <th>commit message</th>
-          <th>author details</th>
-        </tr>
+
+    <script id="details-template" type="text/x-handlebars-template">
         {{#each this}}
-          <tr>
-            <td>{{sha}}</td>
-            <td>{{commit.message}}</td>
-            <td>{{userDetails author}}</td>
-          </tr>
+            {{sha}}
+            {{commit.message}}
+            {{userDetails author}}
         {{/each}}
-      </table>
     </script>
     <script id="user-details-partial" type="text/x-handlebars-template">
       <a href="{{ url }}">{{ login }}</a>
