@@ -20,12 +20,17 @@
   </head>
   <body>
     <main id="main">
+      <input type="text" id="searchTerms">
+      <a id="searchlink" href="https://api.github.com/search/repositories?q=">Search Repositories</a>
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
         <div id="results"></div>
+        <script id="people-template" type="text/x-handlebars-template">
+            {{> userDetails}}
+        </script>
       </div>
       <div>
         <h3>Details</h3>
@@ -35,5 +40,11 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <div class="userDetails">
+        <div class="login">{{login}}</div>
+        <div class="avatar"><img src="{{avatar}}"></div>
+      </div>
+    </script>
   </body>
 </html>
