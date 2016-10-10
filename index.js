@@ -1,7 +1,6 @@
 $(document).ready(function (){
   handlebarsSetup();
   searchRepositories();
-  
 });
 
 function handlebarsSetup() {
