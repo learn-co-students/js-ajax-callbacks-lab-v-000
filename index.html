@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Ajax Lab</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <style>
       .flexbox-container {
@@ -20,18 +21,27 @@
   </head>
   <body>
     <main id="main">
+      <div>
+        <input type="text" id="searchTerms">
+        <a id ="search" href="#" onclick="searchRepositories()" >Search Repositories</a>
+      <div id="errors"></div>
+    </div>
       <div id="errors"></div>
     </main>
+
     <div class="flexbox-container">
       <div>
+
         <h3>Repositories</h3>
         <div id="results"></div>
       </div>
       <div>
+
         <h3>Details</h3>
         <div id="details"></div>
       </div>
     </div>
+    
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
