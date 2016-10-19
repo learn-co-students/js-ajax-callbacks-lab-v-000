@@ -2,38 +2,106 @@
 <html>
   <head>
     <title>Ajax Lab</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
+      div {width: 50%}
+      div img {width:100%}
+
       .flexbox-container {
         display: -ms-flex;
         display: -webkit-flex;
-        display: flex;
+        display: flex;;
       }
       .flexbox-container > div {
-        width: 50%;
+        width: 100%;
         padding: 10px;
       }
       .flexbox-container > div:first-child {
         margin-right: 20px;
       }
+
+
     </style>
   </head>
   <body>
     <main id="main">
-      <div id="errors"></div>
+      <div>
+          <input type="text" id="searchTerms">
+          <a id ="search" href="#" onclick="searchRepositories()" >Search Repositories</a>
+        <div id="errors"></div>
+      </div>
     </main>
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
-        <div id="results"></div>
+        <div id="results">
+          <table class='table table-striped'>
+            <thead>
+              <tr>
+                <td>name</td>
+                <td>Description</td>
+                <td>Commits</td>
+                <td>Login</td>
+                <td>Avator</td>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+
+        </div>
       </div>
       <div>
         <h3>Details</h3>
-        <div id="details"></div>
+        <div id="details">
+          <table class='table table-striped'>
+            <thead>
+              <tr>
+                <td>SHA</td>
+                <td>Name</td>
+                <td>Login</td>
+                <td>Avator</td>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div>
+        <h3>User Details</h3>
       </div>
     </div>
-    <script src="jquery-3.1.0.min.js"></script>
+    <script src="jquery-3.1.1.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#each items}}
+      <tr>
+        <td><a href="{{html_url}}">{{name}}</a></td>
+        <td>{{description}}</td>
+        <td><a href="#" id="commits" data-repository="{{name}}" data-owner="{{owner/login}}" onclick="showCommits(this)">Show Commits</a></td>
+         {{> userDetails owner }}
+      </tr>
+      {{/each}}"
+    </script>
+    <script id="commits-template" type="text/x-handlebars-template">
+    {{#each this}}
+      <tr>
+        <td>{{sha}}</td>
+        <td>{{commit/author/name}}</td>
+        {{> userDetails author }}
+      </tr>
+    {{/each}}
+  </script>
+  <script id="user-details-partial" type="text/x-handlebars-template">
+    <td><a href="{{ html_url }}">{{ login }}</a></td>
+    <td><img src="{{ avatar_url }}"></td>
+  </script>
+
+
   </body>
 </html>
