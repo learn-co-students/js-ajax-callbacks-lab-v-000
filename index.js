@@ -1,4 +1,6 @@
-// Use as reference: https://www.sitepoint.com/a-beginners-guide-to-handlebars/
+// Use as reference:
+// - https://www.sitepoint.com/a-beginners-guide-to-handlebars/
+// - http://handlebarsjs.com/partials.html
 
 function handlebarsSetup() {
   //put any handlebars setup in here
