@@ -1,3 +1,29 @@
+function displayError() {
+  $('errors').html("Error, please try again");
+}
+
+function searchRepositories() {
+  const searchTerm = $('#searchTerms').val();
+  const url = 'https://api.github.com/search/repositories?q=' + searchTerm;
+  $.get(url, data => {
+    const template = Handlebars.compile($('results-template').html())
+    $('#results').html(template(data));
+  }).fail(error => {
+    displayError();
+  })
+}
+
+function showCommits(el) {
+  const owner = el.dataset.owner
+  const repo = el.dataset.repository
+  $.get(`https://api.github.com/repos/${owner}/${repo}/commits`, data => {
+    const template = Handlebars.compile($('#commits-template').html())
+    $('#details').html(template(data))
+  }).fail(error => {
+    displayError()
+  })
+}
+
 function handlebarsSetup() {
   //put any handlebars setup in here
   Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
@@ -5,19 +31,4 @@ function handlebarsSetup() {
 
 $(document).ready(function (){
   handlebarsSetup()
-
-  function searchRepositories(query) {
-    var url = 'https://api.github.com/search/repositories?q=' + query
-    $.get(url, function(response) {
-      $('#results').html(response);
-      // return console.log(response);
-    }).fail(function(error) {
-      console.log('Something went wrong: ' + error);
-    });
-  }
-
-  $('#submit').on('click', function(){
-    var searchTerm = $('#searchTerms').val();
-    return searchRepositories(searchTerm);
-  });
 });
