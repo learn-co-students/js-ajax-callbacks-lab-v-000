@@ -22,17 +22,24 @@
     <main id="main">
       <div id="errors"></div>
       <input type="text" id='searchTerms'/>
-      <a href="https://api.github.com/repositories">Search</a>
+      <a href="http://www.google.com" id="searchLink">Search</a>
     </main>
     <div class="flexbox-container">
+    <script id="results-template" type="text/x-handlebars-template">
       <div>
         <h3>Repositories</h3>
         <div id="results"></div>
+        <ul>
+        {{#items}}
+          <li>Name: {{name}}, Description: {{description}}, Link: <a href={{html_url}}></a></li>
+        {{/items}}
+        </ul>
       </div>
       <div>
         <h3>Details</h3>
         <div id="details"></div>
       </div>
+      </script>
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
