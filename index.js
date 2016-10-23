@@ -6,3 +6,5 @@ function handlebarsSetup() {
 $(document).ready(function (){
   handlebarsSetup()
 });
+
+function searchRepositories()
