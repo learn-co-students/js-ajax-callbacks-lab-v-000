@@ -37,22 +37,21 @@
                 
             
           </ul>
-          {{> userDetails id="user-details-partial"}}
+          {{> userDetails }}
           {{/each}}
         </script>
         </div>
-        
       </div>
+
       <div>
+
         <h3>Details</h3>
         <div id="details">
             <script id="user-details-partial" type="text/x-handlebars-template">​
-            <div id="user-details-partial">
               <ul>
             <li>{{sha}} User: {{owner.login}}, <a href="{{owner.html_url}}">Link to {{owner.login}}</a></li>
             <img src="{{owner.avatar_url}}">
             </ul>
-            </div>
 ​           </script>
         </div>
       </div>

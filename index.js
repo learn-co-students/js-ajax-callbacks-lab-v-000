@@ -1,8 +1,5 @@
 function handlebarsSetup() {
   //put any handlebars setup in here
-  var source   = $("#results-template").html();
-  var template = Handlebars.compile(source);
-
   Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
 }
 
@@ -29,16 +26,17 @@ function handleCommitsLink() {
 function searchRepositories(){
 	var searchTerms = $('input#searchTerms').val();
 	var query = "https://api.github.com/search/repositories?q=" + searchTerms;
-	var source   = $("#results-template").html();
+	var source = $("#results-template").html();
 	var template = Handlebars.compile(source);
 
 	$.get(query, function(results) {
-		$("#results").html(template(results));
+		$("#results").append(template(results));
 		for (var i = 0, len = results.items.length; i < len; i++) {
 			$('a#commitsLink').data({owner: results.items[i].owner.login, repo: results.items[i].name});
-			console.log(results.items[i].owner.login);
+			// console.log(results.items[i].owner.login);
+			console.log(results.items[i].commits_url);
 		}
-		// console.log(results.items);
+		 console.log(results.items);
 	}).fail(displayError());
 }
 
