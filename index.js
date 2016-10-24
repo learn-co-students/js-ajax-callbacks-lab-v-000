@@ -22,9 +22,7 @@ function handleSearchLink() {
 function handleCommitsLink() {
 	$('a#commitsLink').on('click', function(event) {
 		event.preventDefault();
-		var commitsQueryStuff = $(this).innerHtml();
-		console.log(commitsQueryStuff);
-		showCommits(commitsQueryStuff);
+		showCommits();
 	});
 }
 
@@ -36,7 +34,11 @@ function searchRepositories(){
 
 	$.get(query, function(results) {
 		$("#results").html(template(results));
-		console.log(results.items);
+		for (var i = 0, len = results.items.length; i < len; i++) {
+			$('a#commitsLink').data({owner: results.items[i].owner.login, repo: results.items[i].name});
+			console.log(results.items[i].owner.login);
+		}
+		// console.log(results.items);
 	}).fail(displayError());
 }
 
@@ -45,8 +47,12 @@ function displayError() {
 	$('div#errors').append(errorText);
 }
 
-function showCommits(commitsQueryStuff) {
-	var commitsQuery = "http://api.github.com/repos/" + commitsQueryStuff + "/commits";
+function showCommits() {
+	var source   = $("#results-template").html();
+	var template = Handlebars.compile(source);
+	var owner = $('a#commitsLink').data.owner;
+	var repo = $('a#commitsLink').data.repo;
+	var commitsQuery = "http://api.github.com/repos/" + owner + "/" + repo + "/commits";
 	$.get(commitsQuery, function(results) {
 		$("#results").html(template(results));
 	}).fail(displayError());
