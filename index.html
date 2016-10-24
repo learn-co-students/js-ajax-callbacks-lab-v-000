@@ -25,21 +25,38 @@
       <a href="http://www.google.com" id="searchLink">Search</a>
     </main>
     <div class="flexbox-container">
-    <script id="results-template" type="text/x-handlebars-template">
+    
       <div>
         <h3>Repositories</h3>
-        <div id="results"></div>
-        <ul>
-        {{#items}}
-          <li>Name: {{name}}, Description: {{description}}, Link: <a href={{html_url}}></a></li>
-        {{/items}}
-        </ul>
+        <div id="results">
+          <script id="results-template" type="text/x-handlebars-template">
+          {{#each items}}
+            <ul>
+              
+                <li>Name: {{name}}, Description: {{description}}, Repo Link: <a href={{html_url}}>Link to {{name}} repo</a>, Show commits link: <a href="" id="commitsLink">{{owner.login}}/{{name}}</a></li>
+                
+            
+          </ul>
+          {{> userDetails id="user-details-partial"}}
+          {{/each}}
+        </script>
+        </div>
+        
       </div>
       <div>
         <h3>Details</h3>
-        <div id="details"></div>
+        <div id="details">
+            <script id="user-details-partial" type="text/x-handlebars-template">​
+            <div id="user-details-partial">
+              <ul>
+            <li>{{sha}} User: {{owner.login}}, <a href="{{owner.html_url}}">Link to {{owner.login}}</a></li>
+            <img src="{{owner.avatar_url}}">
+            </ul>
+            </div>
+​           </script>
+        </div>
       </div>
-      </script>
+      
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
