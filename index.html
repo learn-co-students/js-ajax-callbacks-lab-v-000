@@ -25,15 +25,46 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
-        <div id="results"></div>
+        <div id="results">
+          <h4> Results </h4>
+        </div>
       </div>
       <div>
         <h3>Details</h3>
-        <div id="details"></div>
+        <div id="details">
+          
+        </div>
       </div>
     </div>
+    
+    <input type="text" id="searchTerms">
+    <a href="#" id="search">Search</a>
+   
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="repos" type="text/x-handlebars-template">
+      <div id="repository">
+        {{#each items}}
+          Name: {{name}} <br>
+          Url: {{html_url}} <br>
+          Description: {{description}} <br>
+          {{>userDetails owner}}<br>
+          <a href="#" data-owner={{owner.login}} data-repository={{name}} class="commits" id="{{owner.login}}_commits"> Show Commits</a><br>
+        {{/each}}
+      </div>
+    </script>
+    <script id="commits" type="text/x-handlebars-template">
+      {{#each this}}
+        SHA: {{sha}}<br>
+        Commiter: {{commit.author.name}}<br>
+        {{>userDetails author}}<br>
+      {{/each}}
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      User Login: {{login}}<br>
+      <img src="{{avatar_url}}" width="100"><br>
+        
+    </script>
   </body>
 </html>
