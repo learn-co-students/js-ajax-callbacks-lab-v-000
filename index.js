@@ -17,6 +17,10 @@ function searchRepositories(){
   })
 }
 
+function showCommits(){
+  
+}
+
 function displayError() {
   $('#errors').append("I'm sorry, there's been an error. Please try again.");
 }
