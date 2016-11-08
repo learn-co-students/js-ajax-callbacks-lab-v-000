@@ -8,8 +8,8 @@ $(document).ready(function (){
 });
 
 $("#search-repositories a").on("click", function searchRepositories(searchTerms){
+  debugger;
 
   $.get("https://api.github.com/search/repositories?q=${searchTerms}", function(data){
-    debugger;
   });
 });
