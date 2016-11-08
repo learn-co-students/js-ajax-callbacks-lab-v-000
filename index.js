@@ -4,5 +4,12 @@ function handlebarsSetup() {
 }
 
 $(document).ready(function (){
-  handlebarsSetup()
+  // handlebarsSetup()
+});
+
+$("a #search-repositories").on("click", function searchRepositories(searchTerms){
+
+  $.get("https://api.github.com/search/repositories?q=${searchTerms}", function(data){
+    debugger;
+  });
 });
