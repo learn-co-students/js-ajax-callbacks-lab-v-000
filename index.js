@@ -7,7 +7,7 @@ $(document).ready(function (){
   // handlebarsSetup()
 });
 
-$("a #search-repositories").on("click", function searchRepositories(searchTerms){
+$("#search-repositories a").on("click", function searchRepositories(searchTerms){
 
   $.get("https://api.github.com/search/repositories?q=${searchTerms}", function(data){
     debugger;
