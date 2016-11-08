@@ -23,22 +23,27 @@
       <div id="errors"></div>
     </main>
     <div id="search-repositories">
-      <input type="text" />
-      <input type="submit" value="Search Repositories" />
-      <a href="">Search Repositories</a>
+      <input type="text" id="searchTerms">
+      <a href="#" id="search" onlcick="searchRepositories()">Search Repositiories</a>
     </div>
     <div class="flexbox-container">
-      <div>
+      <script src="jquery-3.1.0.min.js"></script>
+      <script src="handlebars.js"></script>
+      <script src="index.js"></script>
+      <div id="results">
         <h3>Repositories</h3>
-        <div id="results"></div>
+          <script id="results-template" type="text/x-handlebars-template">
+
+          </script>
       </div>
+
       <div>
         <h3>Details</h3>
-        <div id="details"></div>
+        <script id="user-details-partial" type="text/x-handlebars-template">
+          <div id="details"></div>
+        </script>
       </div>
     </div>
-    <script src="jquery-3.1.0.min.js"></script>
-    <script src="handlebars.js"></script>
-    <script src="index.js"></script>
+
   </body>
 </html>

@@ -4,12 +4,19 @@ function handlebarsSetup() {
 }
 
 $(document).ready(function (){
-  // handlebarsSetup()
+  handlebarsSetup()
 });
 
-$("#search-repositories a").on("click", function searchRepositories(searchTerms){
-  debugger;
+function searchRepositories(){
+  var searchTerms = $('#searchTerms').val();
+  $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data =>
+    {const template = Handlebars.compile($('#results-template').html())
+    $('#results').html(template(data))
+  }).fail(error => {
+    displayError()
+  })
+}
 
-  $.get("https://api.github.com/search/repositories?q=${searchTerms}", function(data){
-  });
-});
+function displayError() {
+  $('#errors').append("I'm sorry, there's been an error. Please try again.");
+}
