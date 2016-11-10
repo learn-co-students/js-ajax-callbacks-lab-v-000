@@ -3,6 +3,10 @@ function handlebarsSetup() {
   Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
 }
 
+function searchRepositories() {
+  
+}
+
 $(document).ready(function (){
   handlebarsSetup()
 });
