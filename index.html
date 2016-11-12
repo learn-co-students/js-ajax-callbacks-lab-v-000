@@ -21,7 +21,7 @@
   <body>
     <main id="main">
       <input type="text" id="searchTerms">
-      <a id="searchLink" href="#" onclick="searchRepositories()">Search Repositories</a>
+      <a href="#" id="search" onclick="searchRepositories()">Search Repositories</a>
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
@@ -49,8 +49,8 @@
       <ul>
       {{#each this}}
         <li>
-          <h2>{{sha}}</h2>
-          <p>{{commit.message}}</p>
+          <h2>{{ sha }}</h2>
+          <p>{{ commit.message }}</p>
           <div>{{> userDetails author }}</div>
         </li>
       {{/each}}
