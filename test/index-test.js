@@ -12,7 +12,7 @@ describe('index.js', () => {
     path.resolve(__dirname, '..', 'jquery-3.1.0.min.js')
   ]
 
-  let $
+  var $
   jsdom({ html, scripts })
 
   before(() => {
@@ -44,7 +44,7 @@ describe('index.js', () => {
   })
 
   describe('ajax functions', () => {
-    let xhr, requests
+    var xhr, requests
 
     before(() => {
       xhr = sinon.useFakeXMLHttpRequest()
