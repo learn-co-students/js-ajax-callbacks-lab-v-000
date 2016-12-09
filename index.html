@@ -24,6 +24,8 @@
     </main>
     <div class="flexbox-container">
       <div>
+        <input type='textarea' id='searchTerms'>
+        <a href="#" id="search">Search Repositories</a>
         <h3>Repositories</h3>
         <div id="results"></div>
       </div>
@@ -35,5 +37,21 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="main-template" type="text/x-handlebars-template">
+      {{> userDetails}}
+    </script>
+    <script id='user-details-partial' type='text/x-handlebars-template'>
+      <div>
+        <ol id={{id}}>
+          <li>Name: {{name}}</li>
+          <li>Description: {{description}}</li>
+          <li>URL: {{url}}</li>
+          <li>Owner Login: {{login}}</li>
+          <li>Owner Avatar: <img src={{avatar}}></li>
+          <li>Owner Link: {{link}}</li>
+          <a href="#" id="show" name={{login}}/{{name}}>Show Commits</a>
+        </ol>
+      </div>
+    </script>
   </body>
 </html>
