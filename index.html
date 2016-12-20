@@ -42,10 +42,32 @@
     <script src="index.js"></script>
 
     <script id="results-template" type="text/x-handlebars-template">
-     </script>
-    <div id="results"></div>
+      {{#each items}} 
+      <h2><a href="{{ html_url }}">{{ name }}</a></h2>
+      <p><a href="#" data-repository="{{ name }}" data-owner="{{ owner.login }}" onclick="showCommits(this)">Show Commits</a></p>
+      <p>{{ description }}</p>
+      <div>{{> userDetails owner }}</div>
+      <hr>
+      {{/each}}
+    </script>
 
     <script id="user-details-partial" type="text/x-handlebars-template">
+      <h4><a href="{{ url }}">{{ login }}</a></h4>
+      <img width="32px" height="32px" src="{{ avatar_url }}">
     </script>
+
+    <script id="commits-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each this }}
+        
+        <li> 
+          <h3> {{ sha  }}</h3>
+          <p> {{ commit.message }}</p>
+          <div> {{>userDetails author}}</div>
+        </li>
+        {{/each}}
+      </ul>
+    </script>
+
   </body>
 </html>
