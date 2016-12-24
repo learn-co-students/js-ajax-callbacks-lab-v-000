@@ -24,6 +24,12 @@
     </main>
     <div class="flexbox-container">
       <div>
+        <h3>Search Terms</h3>
+        <div id="search">
+          <input type="text" id="searchTerms">
+        </div>
+      </div>
+      <div>
         <h3>Repositories</h3>
         <div id="results"></div>
       </div>
@@ -32,6 +38,7 @@
         <div id="details"></div>
       </div>
     </div>
+    <a href="#" onclick="searchRepositories()">Search</a>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
