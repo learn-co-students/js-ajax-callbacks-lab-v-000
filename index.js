@@ -3,7 +3,7 @@ function handlebarsSetup() {
   Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
 }
 function searchRepositories(searchTerms){
-  $.get("https://api.github.com/repos/jquery/jquery/commits?author="+searchTerm, function(response) {
+  $.get("https://api.github.com/repos/jquery/jquery/commits?"+searchTerms, function(response) {
     // Here we are getting the element on the page with the id of sentences and
     // inserting the response
     $("#results").html(response);
