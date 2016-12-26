@@ -19,6 +19,8 @@
     </style>
   </head>
   <body>
+    <input type="text" id="searchTerms" value="">
+    <a href="#" id="clickToSearch" onclick="searchRepositories();">Search Repositories</a>
     <main id="main">
       <div id="errors"></div>
     </main>
@@ -35,5 +37,33 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script type="text/x-handlebars-template" id="results-partial">
+      {{#each items}}
+        <div class="item">
+          <h4>
+            <a href="{{ html_url }}">{{ name }}</a>
+          </h4>
+          <p>
+            {{ description }}
+          </p>
+          <p>
+            <a data-repository="{{ name }}" data-owner="{{ owner.login }}" href="#" onclick="showCommits(this);">Show Commits</a>
+          </p>
+          {{> userDetails owner }}
+        </div>
+      {{/each}}
+    </script>
+    <script type="text/x-handlebars-template" id="user-details-partial">
+      <p>
+        <img src="{{ avatar_url }}" height=25 width=25>
+        by <a href="{{ url }}">{{ login }}</a>
+      </p>
+    </script>
+    <script type="text/x-handlebars-template" id="commits-partial">
+      {{#each this}}
+        <p>{{ sha }}</p>
+        {{> userDetails author }}
+      {{/each}}
+    </script>
   </body>
 </html>
