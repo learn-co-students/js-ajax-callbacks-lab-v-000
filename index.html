@@ -22,10 +22,18 @@
     <main id="main">
       <div id="errors"></div>
     </main>
+
+    <div class="search-repos">
+      <input type="text" id="searchTerms"></input>
+      <a id="search" onclick="searchRepositories()" href="#">search</a>
+    </div>
+
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
-        <div id="results"></div>
+        <div id="results">
+
+        </div>
       </div>
       <div>
         <h3>Details</h3>
@@ -35,5 +43,35 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+        <li>Owner Login: {{owner.login}}</li>
+        <li>Owner Profile: <a href={{owner.url}}>PROFILE</a><br>
+        <img src={{owner.avatar_url}}>
+    </script>
+    <script id="repo-details" type="text/x-handlebars-template">
+      {{#each items}}
+      {{>userDetails}}
+      <ul>
+        <li> Repo name: {{name}} </li>
+        <li> Description: {{description}} </li>
+        <li> Url: {{html_url}} </li>
+        <li> COMMITS: {{commitsLink full_name}} </li> <!-- helper used here -->
+        <!--<li>NAME: {{full_name}} </li>
+        <li> <a id="commits" onclick="showCommits(this)" href="#">show commits</a> </li>
+        -->
+      </ul>
+      {{/each}}
+    </script>
+    <script id="commit-details" type="text/x-handlebars-template">
+      {{#each this}}
+        <ul>
+          <li> SHA: {{sha}} </li>
+          <li> AUTHOR: {{author.login}} </li>
+          <img src={{author.avatar_url}}>
+        </ul>
+      {{/each}}
+    </script>
   </body>
 </html>
