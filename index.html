@@ -20,6 +20,10 @@
   </head>
   <body>
     <main id="main">
+      <p>
+        <input type="text" name="searchTerms" id="searchTerms">
+        <a href="#" id="searchbtn">Search</a>
+      </p>
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
@@ -34,6 +38,44 @@
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
-    <script src="index.js"></script>
+
+
+
+    <script id="item-template" type="text/x-handlebars-template">
+      {{#each items}}
+        <li>
+          Name: <a href="{{html_url}}">{{name}}</a><br>
+          Description: {{description}} <br>
+
+
+          {{> userDetails owner}}<br>
+
+          <a href="{{html_url}}">owner html</a><br>
+          <a href="#" class="commitsbtn" onClick = "showCommits('{{commits_url}}')">{{commits_url}}</a><br>
+        </li>
+      {{/each}}
+    </script>
+
+    <script id="commits-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <li>
+          SHA: {{sha}}<br>
+          Author: {{commit.author.name}}<br>
+          {{> userDetails author}}<br>
+
+        </li>
+      {{/each}}
+    </script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <div class = "user-details">
+
+        Login: {{login}}<br>
+        <img src="{{avatar_url}}" width="80" height="80" alt="-"><br>
+
+      </div>
+    </script>
+
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
