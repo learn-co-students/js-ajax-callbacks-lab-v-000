@@ -10,15 +10,17 @@ $(document).ready(function (){
 
 
 function searchRepositories() {
-	var searchTerm = $("input").val();
+	$("form a").on("click", function(event) {
+		var searchTerm = $("input").val();
 
-	$.get('https://api.github.com/search/repositories?q=' + searchTerm, function(data) {
-		var source = $("#results-template").html()
-		var template = Handlebars.compile(source);
-		displaySuccess(searchTerm);
-		$('#results').html(template(data))
-	}).fail(function(error) {
-		displayError();
+		$.get('https://api.github.com/search/repositories?q=' + searchTerm, function(data) {
+			var source = $("#results-template").html()
+			var template = Handlebars.compile(source);
+			displaySuccess(searchTerm);
+			$('#results').html(template(data))
+		}).fail(function(error) {
+			displayError();
+		});
 	});
 }
 
