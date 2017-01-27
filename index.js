@@ -6,3 +6,13 @@ function handlebarsSetup() {
 $(document).ready(function (){
   handlebarsSetup()
 });
+
+
+function searchRepositories(){
+  url: "https://api.github.com/search/repositories?q=${searchTerms}"
+}
+
+
+function displayError(){
+
+}
