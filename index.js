@@ -10,7 +10,7 @@ $(document).ready(function (){
 var searchTerms = $('#searchTerms').val()
 var $results = $('#results');
 
-$(function searchRepositories(){
+function searchRepositories(){
   $.ajax({
     type: 'GET',
     url: "https://api.github.com/search/repositories?q=${searchTerms}",
@@ -20,7 +20,7 @@ $(function searchRepositories(){
       });
     }
   });
-});
+};
 
 
 // $(function searchRepositories(){
