@@ -11,42 +11,26 @@ var searchTerms = $('#searchTerms').val()
 var $results = $('#results');
 
 function searchRepositories(){
-  $.ajax({
-    type: 'GET',
-    url: "https://api.github.com/search/repositories?q=${searchTerms}",
-    success: function(repos){
-      $.each(repos, function(i, repodata){
-        $results.append('<li> ' + repodata +  '</li>')
-      });
-    }
+  $.get("https://api.github.com/search/repositories?q=${searchTerms}", function(repos) {
+    $.each(repos.items, function(i, repodata){
+      $results.append('<li> ' + repodata.name +  '</li>');
+      $results.append('<li> ' + repodata.full_name +  '</li>');
+    });
+  }).fail(function(error){
+      console.log('An error occured:' + error)
   });
 };
 
+function displayError() {
+  $('#errors').html("I'm sorry, there's been an error. Please try again.")
+}
 
-// $(function searchRepositories(){
-//     $.get("https://api.github.com/search/repositories?q=${searchTerms}"), function(repos){
-//       $.each(repos, function(i, repodata){
-//         $results.append('<li> ' + repodata +  '</li>')
-//       });
-//     }
-// });
-
-
-
-// function searchRepositories(){
-//   url: "https://api.github.com/search/repositories?q=${searchTerms}"
-// }
-
-
-// function displayError(){
-
-// }
-
-
-// $.get("this_doesnt_exist.html", function(data) {
-//   // This will not be called because the .html file request doesn't exist
-//   doSomethingGood();
-// }).fail(function(error) {
-//   // This is called when an error occurs
-//   console.log('Something went wrong: ' + error);
-// });
+// <!-- JS built in function for "fetching" api requests -->
+// fetch("https://api.github.com/search/repositories?q=${searchTerms}")
+//   .then(function(res) {
+//     return res.json()
+//   })
+//   .then(function(repos) {
+//     console.log(repos.items)
+//   })
+  
