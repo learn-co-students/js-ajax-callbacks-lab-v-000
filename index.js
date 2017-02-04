@@ -38,7 +38,6 @@ function displayError(){
   $('#errors').text("I'm sorry, there's been an error. Please try again." )
 };
 
-Handlebars.registerPartial('userDetails', 
-  '{{owner}} </{{tagName}}>')
+//Handlebars.registerPartial('userDetails', '{{owner}} </{{tagName}}>')
 
 
