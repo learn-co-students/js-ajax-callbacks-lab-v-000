@@ -18,15 +18,24 @@ function searchRepositories(){
       //debugger;
   $.get((baseUrl + searchTerms), function (data){
     //do something with the data?
-    console.log(data)
+    
+    // Display the collection of repositories inside the results div.
+    $('#results').text(data) //????
+    //Include:
+      //repository name, 
+      //description, and a 
+      //link to the HTML URL
+      //repository owner login, 
+      //repository owner 
+      //avatar as an image, and a 
+      //link to the owner's profile page.
+     console.log(data)
   }).fail(function(error){
     displayError();
-    // action when error happens
   })
 };
 
 function displayError(){
-// add errors to error div
   $('#errors').text("I'm sorry, there's been an error. Please try again." )
 };
 
