@@ -15,21 +15,20 @@ function searchRepositories(){
   //array of terms to place in url
   var searchTerms = $('#searchTerms').val().split(' ').join('+')
   var baseUrl = "https://api.github.com/search/repositories?q="  
-      //debugger;
+      //ajax get request. first parameter is the URL with the search terms
+      // second parameter is a function handles the returned data from the API
   $.get((baseUrl + searchTerms), function (data){
-    //do something with the data?
-    
-    // Display the collection of repositories inside the results div.
-    $('#results').text(data) //????
-    //Include:
-      //repository name, 
-      //description, and a 
-      //link to the HTML URL
-      //repository owner login, 
-      //repository owner 
-      //avatar as an image, and a 
-      //link to the owner's profile page.
-     console.log(data)
+    console.log(data)
+  // Instructions: Display the collection of repositories inside the results div.
+
+    //create a template variable to hold the compiled template. 
+    //pass id of the element to display template
+    var template = Handlebars.compile( $('#results-template').html() )
+
+    //pass template and data to the div in the index where you to display your results
+    $('#results').html(template(data))
+
+  // when there is an error with the ajax request this gets called
   }).fail(function(error){
     displayError();
   })
@@ -38,5 +37,8 @@ function searchRepositories(){
 function displayError(){
   $('#errors').text("I'm sorry, there's been an error. Please try again." )
 };
+
+Handlebars.registerPartial('userDetails', 
+  '{{owner}} </{{tagName}}>')
 
 

@@ -36,11 +36,30 @@
         <div id="details"></div>
       </div>
     </div>
+
+
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
-    <script type="text/template">
-      
+
+    <script id="results-template" type="text/template">
+<!--       Include:
+      repository name, [x]
+      description, and a [x]
+      link to the HTML URL [x]
+
+      repository owner login, [x]
+      repository owner avatar as an image, and a [x]
+      link to the owner's profile page.[x] -->
+      {{#each items }}
+        <!--repository -->
+        <h2><a href="{{ html_url }}">{{ name }}</a></h2>     
+        <p> {{ description }}
+        <br>
+        <!-- repo owner -->
+        <a href="{{ owner.html_url }}">{{ owner.login }}</a> 
+        <img width="32px" height="32px" src="{{ owner.avatar_url }}">
+      {{/each}}
     </script>
   </body>
 </html>
