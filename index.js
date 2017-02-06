@@ -16,7 +16,7 @@ $(document).ready(function (){
     $("#errors").append("I'm sorry, there's been an error. Please try again.");
   }
 
-  getCommits = function(link) {
+  showCommits = function(link) {
     $("#details").empty();
     $("#errors").empty();
     $.get(link)
@@ -51,7 +51,7 @@ $(document).ready(function (){
             var userProfileLink = repo["owner"]["html_url"] || "None provided";
             var commitsLink = repo.commits_url.slice(0, -6);
              
-            $("#results").append(`<p><b>Repo Name: ${name}</b></p><p>Description: ${description}</p><p><a href=${link} target="_blank">Repo Details Here</a></p><p>Creator: ${userLogin}</p><p><img src=${userAvatar}/></p><p><a href=${userProfileLink} target="_blank">Creator Profile</a></p><div class="commits"><button type="button"  value="View Commits" id=${commitsLink} onclick="getCommits(this.id);">View Commits</button></div></p><hr><br><br>` );
+            $("#results").append(`<p><b>Repo Name: ${name}</b></p><p>Description: ${description}</p><p><a href=${link} target="_blank">Repo Details Here</a></p><p>Creator: ${userLogin}</p><p><img src=${userAvatar}/></p><p><a href=${userProfileLink} target="_blank">Creator Profile</a></p><div class="commits"><button type="button"  value="View Commits" id=${commitsLink} onclick="showCommits(this.id);">View Commits</button></div></p><hr><br><br>` );
           })  
         }).fail(function(error) {
         displayError();
