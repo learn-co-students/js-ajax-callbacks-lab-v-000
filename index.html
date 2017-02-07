@@ -43,7 +43,7 @@
     <script src="index.js"></script>
 
     <script id="results-template" type="text/template">
-<!--       Include:
+      <!--       Include:
       repository name, [x]
       description, and a [x]
       link to the HTML URL [x]
@@ -56,10 +56,18 @@
         <h2><a href="{{ html_url }}">{{ name }}</a></h2>     
         <p> {{ description }}
         <br>
-        <!-- repo owner -->
-        <a href="{{ owner.html_url }}">{{ owner.login }}</a> 
-        <img width="32px" height="32px" src="{{ owner.avatar_url }}">
+        <!-- repo owner  partial goes here-->
+        {{> userDetails }}
+        
       {{/each}}
+    </script>
+    <script id="user-details-partial" type="text/template">
+      <a href="{{ owner.html_url }}">{{ owner.login }}</a> 
+        <img width="32px" height="32px" src="{{ owner.avatar_url }}">
+    </script>
+
+    <script id="user-details-partial" type="text/javascript">
+      
     </script>
   </body>
 </html>

@@ -22,7 +22,7 @@ function searchRepositories(){
   // Instructions: Display the collection of repositories inside the results div.
 
     //create a template variable to hold the compiled template. 
-    //pass id of the element to display template
+    //pass id of the element holding the template
     var template = Handlebars.compile( $('#results-template').html() )
 
     //pass template and data to the div in the index where you to display your results
