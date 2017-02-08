@@ -55,22 +55,17 @@ function showCommits(item){
 
   var commitsUrl = `https://api.github.com/repos/${owner}/${repo}/commits`
   $.get(commitsUrl, function(data){
-    return console.log(data)
+      var template = Handlebars.compile( $("#show-commits-template").html())
+      $("#details").html(template(data))
+
   //  debugger;
     //compile a template and pass the data in order to display it?
-    
-  }).fail(error => {
-    displayError();
-  })
-  
-  //displays them in the details div
 
-  //include: 
-    //SHA, 
-    //the author, 
-    //the author's login, 
-    //and the author's avatar as an image.
+  }).fail(error => {
+    displayError()
+  })
+ 
 };
 
 //Handlebars.registerPartial('userDetails', '{{owner}} </{{tagName}}>')
-searchRepositories()
+//searchRepositories()

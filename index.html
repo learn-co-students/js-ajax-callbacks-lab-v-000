@@ -56,20 +56,29 @@
         <h2><a href="{{ html_url }}">{{ name }}</a></h2>     
         <p> {{ description }}
         <br>
-
         <a href="#" onclick="showCommits(this);" data-repository="{{ name }}" data-owner="{{ owner.login }}" >Show Commits</a>
-
         <!-- repo owner  partial goes here-->
-        {{> userDetails }}
-        
+        {{> userDetails owner }}
       {{/each}}
     </script>
+
     <script id="user-details-partial" type="text/template">
-      <a href="{{ owner.html_url }}">{{ owner.login }}</a> 
-        <img width="32px" height="32px" src="{{ owner.avatar_url }}">
+      <a href="{{ url }}">{{ login }}</a> 
+        <img width="32px" height="32px" src="{{ avatar_url }}">
     </script>
 
-    <script id="user-details-partial" type="text/javascript">
+    <script id="show-commits-template" type="text/template">
+      {{#each this}}
+        {{sha}}
+        {{commit.message}}
+        <br>
+        {{>userDetails author}}
+        <br>
+
+      {{/each}}
+      
+    </script>
+
       
     </script>
   </body>
