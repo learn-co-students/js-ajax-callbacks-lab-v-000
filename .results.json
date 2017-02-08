@@ -1,0 +1,118 @@
+{
+  "stats": {
+    "suites": 7,
+    "tests": 5,
+    "passes": 0,
+    "pending": 0,
+    "failures": 5,
+    "start": "2017-02-08T14:20:59.118Z",
+    "end": "2017-02-08T14:21:01.610Z",
+    "duration": 2492
+  },
+  "tests": [
+    {
+      "title": "has the right elements",
+      "fullTitle": "index.js index.html has the right elements",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {
+        "stack": "TypeError: Cannot read property 'innerHTML' of undefined\n    at Context.it (test/index-test.js:25:51)",
+        "message": "Cannot read property 'innerHTML' of undefined"
+      }
+    },
+    {
+      "title": "registers a userDetails partial",
+      "fullTitle": "index.js handlebars registers a userDetails partial",
+      "duration": 3,
+      "currentRetry": 0,
+      "err": {
+        "stack": "Error: Expected undefined to exist\n    at assert (node_modules/expect/lib/assert.js:29:9)\n    at Expectation.toExist (node_modules/expect/lib/Expectation.js:52:28)\n    at Context.it (test/index-test.js:35:54)",
+        "message": "Expected undefined to exist"
+      }
+    },
+    {
+      "title": "sets the errors div content",
+      "fullTitle": "index.js displayError sets the errors div content",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {
+        "stack": "ReferenceError: displayError is not defined\n    at Context.it (test/index-test.js:41:7)",
+        "message": "displayError is not defined"
+      }
+    },
+    {
+      "title": "calls out to the github search API and displays results",
+      "fullTitle": "index.js ajax functions searchRepositories calls out to the github search API and displays results",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {
+        "stack": "ReferenceError: searchRepositories is not defined\n    at Context.it (test/index-test.js:65:9)",
+        "message": "searchRepositories is not defined"
+      }
+    },
+    {
+      "title": "calls the github commits api and displays results",
+      "fullTitle": "index.js ajax functions showCommits calls the github commits api and displays results",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {
+        "stack": "ReferenceError: showCommits is not defined\n    at Context.it (test/index-test.js:75:9)",
+        "message": "showCommits is not defined"
+      }
+    }
+  ],
+  "pending": [],
+  "failures": [
+    {
+      "title": "has the right elements",
+      "fullTitle": "index.js index.html has the right elements",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {
+        "stack": "TypeError: Cannot read property 'innerHTML' of undefined\n    at Context.it (test/index-test.js:25:51)",
+        "message": "Cannot read property 'innerHTML' of undefined"
+      }
+    },
+    {
+      "title": "registers a userDetails partial",
+      "fullTitle": "index.js handlebars registers a userDetails partial",
+      "duration": 3,
+      "currentRetry": 0,
+      "err": {
+        "stack": "Error: Expected undefined to exist\n    at assert (node_modules/expect/lib/assert.js:29:9)\n    at Expectation.toExist (node_modules/expect/lib/Expectation.js:52:28)\n    at Context.it (test/index-test.js:35:54)",
+        "message": "Expected undefined to exist"
+      }
+    },
+    {
+      "title": "sets the errors div content",
+      "fullTitle": "index.js displayError sets the errors div content",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {
+        "stack": "ReferenceError: displayError is not defined\n    at Context.it (test/index-test.js:41:7)",
+        "message": "displayError is not defined"
+      }
+    },
+    {
+      "title": "calls out to the github search API and displays results",
+      "fullTitle": "index.js ajax functions searchRepositories calls out to the github search API and displays results",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {
+        "stack": "ReferenceError: searchRepositories is not defined\n    at Context.it (test/index-test.js:65:9)",
+        "message": "searchRepositories is not defined"
+      }
+    },
+    {
+      "title": "calls the github commits api and displays results",
+      "fullTitle": "index.js ajax functions showCommits calls the github commits api and displays results",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {
+        "stack": "ReferenceError: showCommits is not defined\n    at Context.it (test/index-test.js:75:9)",
+        "message": "showCommits is not defined"
+      }
+    }
+  ],
+  "passes": []
+}
