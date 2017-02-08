@@ -47,10 +47,8 @@
       repository name, [x]
       description, and a [x]
       link to the HTML URL [x]
-
-      repository owner login, [x]
-      repository owner avatar as an image, and a [x]
-      link to the owner's profile page.[x] -->
+      user details [x]
+      -->
       {{#each items }}
         <!--repository -->
         <h2><a href="{{ html_url }}">{{ name }}</a></h2>     
@@ -63,23 +61,30 @@
     </script>
 
     <script id="user-details-partial" type="text/template">
+      <!--       Include:
+      owner login, [x]
+      owner avatar as an image, and a [x]
+      link to the owner's profile page.[x] 
+      -->
       <a href="{{ url }}">{{ login }}</a> 
-        <img width="32px" height="32px" src="{{ avatar_url }}">
+      <img width="32px" height="32px" src="{{ avatar_url }}">
     </script>
 
     <script id="show-commits-template" type="text/template">
+      <!--       Include:
+      commit message [x]
+      commit sha [x]
+      commit user details[x] 
+      -->
       {{#each this}}
         {{sha}}
         {{commit.message}}
         <br>
         {{>userDetails author}}
         <br>
-
-      {{/each}}
-      
+      {{/each}}  
     </script>
-
-      
+    
     </script>
   </body>
 </html>
