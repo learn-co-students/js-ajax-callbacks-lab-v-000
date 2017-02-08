@@ -17,27 +17,60 @@ function searchRepositories(){
   var baseUrl = "https://api.github.com/search/repositories?q="  
       //ajax get request. first parameter is the URL with the search terms
       // second parameter is a function handles the returned data from the API
-  $.get((baseUrl + searchTerms), function (data){
-    console.log(data)
+  //$.get((baseUrl + searchTerms), function (data){
+    //console.log(data)
   // Instructions: Display the collection of repositories inside the results div.
 
     //create a template variable to hold the compiled template. 
     //pass id of the element holding the template
-    var template = Handlebars.compile( $('#results-template').html() )
+   // var template = Handlebars.compile( $('#results-template').html() )
 
     //pass template and data to the div in the index where you to display your results
-    $('#results').html(template(data))
+   // $('#results').html(template(data))
 
   // when there is an error with the ajax request this gets called
-  }).fail(function(error){
-    displayError();
-  })
+ // }).fail(function(error){
+  //  displayError();
+  //})
+
+  $.get(baseUrl + searchTerms)
+    .done( data => {
+      var template = Handlebars.compile( $('#results-template').html());
+      $('#results').html(template(data))
+    })
+    .fail(err => displayError() )
 };
 
 function displayError(){
   $('#errors').text("I'm sorry, there's been an error. Please try again." )
 };
 
+function showCommits(item){
+
+  //return console.log(item)
+
+  //get commits from github api
+  const owner = item.dataset.owner
+  const repo = item.dataset.repository
+
+  var commitsUrl = `https://api.github.com/repos/${owner}/${repo}/commits`
+  $.get(commitsUrl, function(data){
+    return console.log(data)
+  //  debugger;
+    //compile a template and pass the data in order to display it?
+    
+  }).fail(error => {
+    displayError();
+  })
+  
+  //displays them in the details div
+
+  //include: 
+    //SHA, 
+    //the author, 
+    //the author's login, 
+    //and the author's avatar as an image.
+};
+
 //Handlebars.registerPartial('userDetails', '{{owner}} </{{tagName}}>')
-
-
+searchRepositories()
