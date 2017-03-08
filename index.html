@@ -25,6 +25,10 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
+        <form onsubmit="searchRepositories();return false;">
+          Repository: <input id="searchTerms" type="text">
+        </form>
+        <a href="#" onclick="searchRepositories();">Search Repositories</a>
         <div id="results"></div>
       </div>
       <div>
@@ -32,6 +36,36 @@
         <div id="details"></div>
       </div>
     </div>
+
+    <script id="repository-template" type="text/x-handlebars-template">
+      <div>
+        {{#each this}}
+          <div>
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+            <p><a href="{{html_url}}">Repo</a> - <a href="#" data-repository="{{name}}" data-owner="{{owner.login}}" onclick="showCommits(this)">Show commits</a></p>
+          </div>
+          {{> userDetails owner }}
+        {{/each}}
+      </div>
+    </script>
+
+    <script id="commits-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <div>
+          <h4>SHA: {{sha}}</h4>
+        </div>
+        {{> userDetails author }}
+      {{/each}}
+    </script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <div>
+        <h4>{{login}}</h4>
+        <p><img src="{{avatar_url}}" height="32" width="32"></p>
+        <p><a href="https://github.com/{{login}}">Profile</a></p>
+      </div>
+    </script>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
