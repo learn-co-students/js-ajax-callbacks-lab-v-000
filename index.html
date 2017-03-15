@@ -3,7 +3,14 @@
   <head>
     <title>Ajax Lab</title>
 
+
     <style>
+      img {
+        height: 100px;
+      }
+      .commit-div {
+        border: 1px solid black;
+      }
       .flexbox-container {
         display: -ms-flex;
         display: -webkit-flex;
@@ -16,22 +23,54 @@
       .flexbox-container > div:first-child {
         margin-right: 20px;
       }
+      .repo {
+        border: solid 1px black;
+      }
     </style>
   </head>
   <body>
+
+      <input type="text" id="searchTerms">
+      <a id="search" href="search">Search</a>
     <main id="main">
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
-        <div id="results"></div>
+        <div id="results">
+        </div>
       </div>
       <div>
         <h3>Details</h3>
         <div id="details"></div>
       </div>
     </div>
+    <script id="template" type="text/x-handlebars-template">
+      <div class="repo">
+        <!--template here -->
+        {{> userDetails}}
+      </div>
+    </script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      {{#if sha}}<h3>Sha: {{sha}}</h3>{{/if}}
+      <h3>Name: {{name}}</h3>
+      {{#if description}}<h4>Description: {{description}}</h4>{{/if}}
+      <h4>login: {{login}}</h4>
+      <img src="{{avatar_url}}"><br>
+      {{#if profile_url}}<a href="{{profile_url}}">Profile Page</a><br>{{/if}}
+      {{#if repo_url}}<a href="{{repo_url}}">Repo Page</a><br>{{/if}}
+      {{#if full_name}}<a class = "commits" href="{{full_name}}">Show commits</a>{{/if}}
+    </script>
+    <!-- <script id="commit-template" type="text/x-handlebars-template">
+    <div class="commit-div">
+
+      <h4>Name: {{name}}</h4>
+      <h4>Login: {{login}}</h4>
+      <img src="{{avatar_url}}">
+    </div> -->
+    </script>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
