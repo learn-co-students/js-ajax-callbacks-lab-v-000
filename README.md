@@ -1,6 +1,6 @@
 # AJAX and Callbacks Lab
 
-## Objectives
+## Objectives 
 
 + Use Ajax's `get` method
 + Use the `success` callback
