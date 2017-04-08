@@ -4,6 +4,11 @@
     <title>Ajax Lab</title>
 
     <style>
+.avatar {
+  height: 100px;
+  width: 100px;
+}
+
       .flexbox-container {
         display: -ms-flex;
         display: -webkit-flex;
@@ -20,6 +25,10 @@
   </head>
   <body>
     <main id="main">
+      <form>
+        <label>Search: <input id="searchTerms" type="text"></label>
+        <a href="#" onClick="searchRepositories();">Search</a>
+      </form>
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
@@ -32,6 +41,38 @@
         <div id="details"></div>
       </div>
     </div>
+
+    <script id="repos-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <div>
+          <h3>{{ name }}</h3>
+          <p>
+            {{ description }} | <a href="{{ html_url }}">{{ html_url }}</a>
+          </p>
+          {{> userDetails owner }}
+          <p>
+            <a href="#" data-repository="{{ name }}" 
+                        data-owner="{{ owner.login }}" 
+                        onClick="showCommits(this);">Show Commits</a>
+          </p>
+        </div>
+      {{/each}}
+    </script>
+
+    <script id="commits-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <h3>{{ sha }}</h3>
+        {{> userDetails author }}
+      {{/each}}
+    </script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <p>
+        <img class="avatar" src="{{ avatar_url }}">
+        <a href="{{ html_url }}">{{ login }}</a>
+      </p>
+    </script>
+
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
