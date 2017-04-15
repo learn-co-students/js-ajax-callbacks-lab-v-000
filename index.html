@@ -16,6 +16,10 @@
       .flexbox-container > div:first-child {
         margin-right: 20px;
       }
+      .avatar_url {
+        max-width: 40px;
+        max-height: 40px;
+      }
     </style>
   </head>
   <body>
@@ -25,6 +29,8 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
+          <input type="text" id="searchTerms">
+          <a href="#" onclick="searchRepositories(this)">Search Repositories</a>
         <div id="results"></div>
       </div>
       <div>
@@ -32,6 +38,34 @@
         <div id="details"></div>
       </div>
     </div>
+
+    <script type="text/x-handlebars-template" id="user-details-partial">
+      <section>
+        <p><strong>{{login}}</strong> - <a href="{{html_url}}">Profile</a> </p>
+        <img src="{{avatar_url}}" class="avatar_url" alt="{{login}} avatar">
+      </section>
+    </script>
+
+    <script type="text/x-handlebars-template" id="repoTemplate">
+      {{#each this}}
+        <div>
+          <a href="{{html_url}}"><h2>{{name}}</h2></a>
+          <p>{{description}}</p>
+          <a href="#" onclick="showCommits(this)" data-repository="{{name}}" data-owner="{{owner.login}}">Show Commits</a>
+          <hr>
+          {{> userDetails owner }}
+          <hr>
+        </div>
+      {{/each}}
+    </script>
+
+    <script type="text/x-handlebars-template" id="commitTemplate">
+      {{#each this}}
+        <p>{{commit.message}} - <a href="{{comments_url}}">View Commit</a></p>
+        {{> userDetails author }}
+        <hr>
+      {{/each}}
+    </script>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
