@@ -25,6 +25,10 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
+        Search: <input type="text" id="searchTerms" />
+        <br />
+        <a href="#" onclick="searchRepositories();">Search Repositories</a>
+
         <div id="results"></div>
       </div>
       <div>
@@ -32,6 +36,31 @@
         <div id="details"></div>
       </div>
     </div>
+    <script id="results-template" type="text/x-handlebars-template">
+      {{#each items}}
+      <li>
+        <h2>{{name}}</h2>
+        <h2>{{html_url}}</h2>
+        <h2>{{description}}</h2>
+        <div>{{>userDetails owner}}</div>
+        <a href="#" onclick="showCommits(this)">Show Commits</a>
+      </li>
+      {{/each}}
+    </script>
+    <script id="commits-template" type="text/x-handlebars-template">
+      {{#each this}}
+        {{sha}}
+        {{author}}
+        {{commit.message}}
+        <div>{{>userDetails author}}</div>
+      {{/each}}
+      <li>
+        <h2>
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <a href="{{url}}">{{login}}</a>
+      <img src="{{avatar_url}}" width="32px" height="32px" />
+    </script>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
