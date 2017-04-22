@@ -1,0 +1,65 @@
+Arguments: 
+  /usr/bin/nodejs /usr/share/yarn/bin/yarn.js install --no-lockfile
+
+PATH: 
+  /var/opt/rails/bin:/var/opt/httpserver/bin:/var/opt/atom/bin:/var/opt/shotgun/bin:/var/opt/rackup/bin:/var/opt/jekyll/bin:/usr/local/rvm/gems/ruby-2.3.1/bin:/usr/local/rvm/gems/ruby-2.3.1@global/bin:/usr/local/rvm/rubies/ruby-2.3.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/rvm/bin
+
+Yarn version: 
+  0.21.3
+
+Node version: 
+  6.10.1
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "js-ajax-callbacks-lab",
+    "version": "1.0.0",
+    "description": "practice jquery ajax",
+    "main": "index.js",
+    "engines": {
+      "node": "6.x",
+      "npm": "3.x"
+    },
+    "scripts": {
+      "test": "mocha --timeout 10000 -R mocha-multi --reporter-options nyan=-,json=.results.json"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/learn-co-curriculum/js-ajax-callbacks-lab.git"
+    },
+    "keywords": [
+      "js",
+      "ajax",
+      "jquery",
+      "callbacks"
+    ],
+    "author": "scottcreynolds",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "bugs": {
+      "url": "https://github.com/learn-co-curriculum/js-ajax-callbacks-lab/issues"
+    },
+    "homepage": "https://github.com/learn-co-curriculum/js-ajax-callbacks-lab#readme",
+    "dependencies": {
+      "expect": "^1.20.2",
+      "handlebars": "^4.0.5",
+      "jquery": "^3.1.0",
+      "jsdom": "^9.4.1",
+      "mocha": "^2.5.3",
+      "mocha-jsdom": "^1.1.0",
+      "mocha-multi": "^0.9.0",
+      "sinon": "^1.17.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: ENOENT: no such file or directory, open '/home/ivanpilot/code/labs/js-ajax-callbacks-lab-v-000/node_modules/verror/examples/levels-werror.js'
+      at Error (native)
