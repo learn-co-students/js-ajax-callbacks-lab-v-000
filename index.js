@@ -20,7 +20,8 @@ function searchRepositories(){
 }
 
 function showCommits(el){
-  var repo = el.dataset.repo
+  debugger;
+  var repo = el.dataset.repository
   var owner = el.dataset.owner
 
   $.get("https://api.github.com/repos/" + owner + "/" + repo +"/commits", function(response){

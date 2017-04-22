@@ -42,7 +42,7 @@
             {{>userDetails owner}}
             <div><strong>Repo Name: </strong><a href="{{html_url}}">{{name}}</a></div>
             <div><strong>Description: </strong>{{description}}</a></div>
-            <div><a href="#" data-owner="{{owner.login}}" data-repo="{{name}}" onclick="showCommits(this)">Show Commits</a></div>
+            <div><a href="#" data-owner="{{owner.login}}" data-repository="{{name}}" onclick="showCommits(this)">Show Commits</a></div>
           </li>
         {{/each}}
         </ul>
