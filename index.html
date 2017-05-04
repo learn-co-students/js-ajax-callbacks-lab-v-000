@@ -21,6 +21,7 @@
   <body>
     <main id="main">
       <div id="errors"></div>
+      Search for: <input type="text" id="searchTerm"> <a href="#" onclick="searchRepositories()">Search</a>
     </main>
     <div class="flexbox-container">
       <div>
@@ -32,6 +33,24 @@
         <div id="details"></div>
       </div>
     </div>
+    <script id="repository-template" type="text/x-handlebars-template">
+<!--        repository name, description, and a link to the HTML URL. Also include repository owner login, repository owner avatar as an image, and a link to the owner's profile page -->
+        <ul>
+           {{#each this}}
+           <li>
+               <h2><a href="{{html_url}}">{{name}}</a></h2>
+               <p>Description: {{description}}</p>
+               {{> userDetails owner}}
+           </li>
+           {{/each}}
+        </ul>    
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+        <section>
+            <header><h4>Created By <a href="{{html_url}}">{{login}}</a></h4></header>
+            <img src="{{avatar_url}}" height="32" width="32">
+        </section>
+    </script>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
