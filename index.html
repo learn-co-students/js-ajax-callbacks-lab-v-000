@@ -21,7 +21,7 @@
   <body>
     <main id="main">
       <div id="errors"></div>
-      Search for: <input type="text" id="searchTerm"> <a href="#" onclick="searchRepositories()">Search</a>
+      Search for: <input type="text" id="searchTerms"> <a href="#" onclick="searchRepositories()">Search</a>
     </main>
     <div class="flexbox-container">
       <div>
@@ -34,13 +34,24 @@
       </div>
     </div>
     <script id="repository-template" type="text/x-handlebars-template">
-<!--        repository name, description, and a link to the HTML URL. Also include repository owner login, repository owner avatar as an image, and a link to the owner's profile page -->
         <ul>
            {{#each this}}
            <li>
                <h2><a href="{{html_url}}">{{name}}</a></h2>
                <p>Description: {{description}}</p>
+               <p><a href="#" onclick="showCommits(this)" data-repository="{{name}}" data-owner="{{owner.login}}">Show Commits</a></p>
                {{> userDetails owner}}
+           </li>
+           {{/each}}
+        </ul>    
+    </script>
+    <script id="commits-template" type="text/x-handlebars-template">
+        <ul>
+           {{#each this}}
+           <li>
+               <p>sha: {{sha}}</p>
+               <p>author: {{commit.author.name}}</p>
+               {{> userDetails author}}
            </li>
            {{/each}}
         </ul>    
