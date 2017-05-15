@@ -20,6 +20,8 @@
   </head>
   <body>
     <main id="main">
+      <input type="text" id="searchTerms">
+      <a href="#" id="search" onclick="searchRepositories()">Search Repositories</a>
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
@@ -32,6 +34,11 @@
         <div id="details"></div>
       </div>
     </div>
+
+
+  <script id="user-details-partial" type="text/x-handlebars-template">
+  </script>
+
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
