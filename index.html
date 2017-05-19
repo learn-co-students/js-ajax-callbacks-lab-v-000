@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Ajax Lab</title>
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="script.js"></script><br>
     <style>
       .flexbox-container {
         display: -ms-flex;
@@ -23,6 +24,11 @@
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
+      <form>
+        <input type="text" id="searchTerms"><br>
+        <input type="submit" value="Search Repositories" onclick="searchRepositories(document.getElementById('searchTerms').value)">
+      </form>
+      <br>
       <div>
         <h3>Repositories</h3>
         <div id="results"></div>
