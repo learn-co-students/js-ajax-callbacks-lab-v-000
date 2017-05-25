@@ -1,39 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Ajax Lab</title>
 
     <style>
-      .flexbox-container {
-        display: -ms-flex;
-        display: -webkit-flex;
-        display: flex;
-      }
-      .flexbox-container > div {
-        width: 50%;
-        padding: 10px;
-      }
-      .flexbox-container > div:first-child {
-        margin-right: 20px;
-      }
+        .flexbox-container {
+            display: -ms-flex;
+            display: -webkit-flex;
+            display: flex;
+        }
+        
+        .flexbox-container>div {
+            width: 50%;
+            padding: 10px;
+        }
+        
+        .flexbox-container>div:first-child {
+            margin-right: 20px;
+        }
+        
+        img {
+            width: 20px;
+            height: 20px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <main id="main">
-      <div id="errors"></div>
+        <div id="errors"></div>
+        <form action='#'>
+            <input id='searchTerms' type='text'>
+            <a href='#' onclick='searchRepositories(); return false;'>Search</a>
+        </form>
     </main>
     <div class="flexbox-container">
-      <div>
-        <h3>Repositories</h3>
-        <div id="results"></div>
-      </div>
-      <div>
-        <h3>Details</h3>
-        <div id="details"></div>
-      </div>
+        <div>
+            <h3>Repositories</h3>
+            <div id="results"></div>
+        </div>
+        <div>
+            <h3>Details</h3>
+            <div id="details"></div>
+        </div>
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
-  </body>
+
+    <script id="result-template" type="text/x-handlebars-template">
+        {{#each this}}
+        <article>
+            <div>
+                {{name}} - {{description}} <a href={{html_url}}>link</a>
+                <a data-repository="{{name}}" data-owner="{{owner.login}}" onclick="showCommits(this);return false;" href='#'>
+                    Show Commits
+                </a>
+            </div>
+            <div>
+                {{>userDetails owner}}
+            </div>
+            <hr>
+        </article>
+        {{/each}}
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+        {{login}} - <img src={{avatar_url}}> -
+        <a href={{html_url}}>profile</a>
+    </script>
+    <script id='commits-template' type="text/x-handlebar-template">
+        <ul>
+            {{#each this}}
+            <li>
+                {{sha}} - {{>userDetails author }}
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+</body>
+
 </html>
