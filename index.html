@@ -21,7 +21,10 @@
   <body>
     <main id="main">
       <div id="searchTerms">
-        <a href=# onclick="searchRepositories()">Search Repositories! </a>
+        <form onsubmit="searchRepositories(); return false;">
+          <input id="search-term" type="text">
+          <input type="submit">
+        </form>
       </div>
 
       <div id="errors"></div>
@@ -39,5 +42,9 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+
+    </script>
   </body>
 </html>

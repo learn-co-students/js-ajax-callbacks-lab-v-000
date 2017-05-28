@@ -9,14 +9,15 @@ $(document).ready(function (){
 
 function searchRepositories() {
   const req = new XMLHttpRequest()
-  req.addEventListener("load", resultsData);
-  console.log(this)
-  req.open("GET", `https://api.github.com/search/repositories?q=`)
-  req.send()
+  $("form").on("submit", function() {
+    const searchTerm = document.getElementById('search-term').value
+  });
+
+  $.get( `https://api.github.com/search/repositories?q=${searchTerm}`,resultsData)
 }
 
 function resultsData(event, data) {
   const results = JSON.parse(this.responseText)
-  console.log(results)
+  console.log(this)
   // const src = document.getElementById("").innerHTML
 }
