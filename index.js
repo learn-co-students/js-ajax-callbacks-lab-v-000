@@ -8,16 +8,16 @@ $(document).ready(function (){
 });
 
 function searchRepositories() {
-  const req = new XMLHttpRequest()
-  $("form").on("submit", function() {
-    const searchTerm = document.getElementById('search-term').value
-  });
-
-  $.get( `https://api.github.com/search/repositories?q=${searchTerm}`,resultsData)
+  const searchTerms = $('#searchTerms').val()
+  $.get(`https://api.github.com/search/repositories?q=${searchTerms}`,resultsData))
 }
 
 function resultsData(event, data) {
   const results = JSON.parse(this.responseText)
   console.log(this)
   // const src = document.getElementById("").innerHTML
+}
+
+function displayError() {
+  $('#errors').html("I'm sorry, there's been an error. Please try again.")
 }
