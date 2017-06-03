@@ -20,12 +20,14 @@
   </head>
   <body>
     <main id="main">
-      <div id="errors"></div>
     </main>
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
+        <input id="searchTerms">
+        <a href="#" onclick="searchRepositories();return false;">Search Repositories</a>
         <div id="results"></div>
+        <div id="errors"></div>
       </div>
       <div>
         <h3>Details</h3>
@@ -35,5 +37,35 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+    <script id="repository-template" type="text/x-handlebars-template">
+      <ul>
+       {{#each this}}
+         <li>
+           <h2><a href="{{html_url}}">{{name}}</a></h2>
+           {{> userDetails owner }}
+           <p>Watchers: {{watchers_count}}</p>
+           <p>Forks: {{forks_count}}</p>
+           <p>Issues: {{open_issues_count}}</p>
+           <a href="#" data-owner = "{{owner.login}}" data-repository = "{{name}}" onclick="showCommits(this);">View Commits</a>
+         </li>
+        {{/each}}
+      </ul>
+    </script>
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <section>
+        <header><h4>Created By {{login}}</h4></header>
+        <img src="{{avatar_url}}" height="32" width="32">
+      </section>
+    </script>
+    <script id="commits-template" type="text/x-handlebars-template">
+      <ul>
+       {{#each this}}
+         <li>
+          <p>SHA: {{sha}}</p>
+           {{> userDetails commit.author }}
+         </li>
+        {{/each}}
+      </ul>
+    </script>
   </body>
 </html>
