@@ -25,15 +25,56 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
+
+        <input type="text" name="searchTerms" id="searchTerms">
+        <a href="#" id="search" onclick="searchRepositories()">Search</a>
+
         <div id="results"></div>
+
       </div>
+
       <div>
         <h3>Details</h3>
         <div id="details"></div>
       </div>
+
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="handlebars.js"></script>
     <script src="index.js"></script>
+
+    <script id="repository-template" type="text/x-handlebars-template">
+      <ul>
+       {{#each this}}
+         <li>
+           <h3><a href="{{html_url}}">{{name}}</a></h3>
+           <p>{{description}}</p>
+           <a href="#" data-fullname="{{full_name}}" onclick="showCommits(this)">Commits</a>
+           {{> userDetails owner }}
+         </li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script id="commit-template" type="text/x-handlebars-template">
+      <ul>
+       {{#each this}}
+         <li>
+           <p>{{sha}}</p>
+           <p>{{commit.message}}</p>
+           {{> userDetails author }}
+         </li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script id="user-details-partial" type="text/x-handlebars-template">
+      <section>
+        <header>
+          <p><img src="{{avatar_url}}" height="32" width="32">
+          Created By <a href="{{html_url}}">{{login}}</a></p>
+        </header>
+      </section>
+    </script>
   </body>
 </html>
