@@ -22,11 +22,12 @@
     <main id="main">
       <div id="errors"></div>
     </main>
+    <div id="searchRepos">
+      <input id="searchTerms" type="text"><br>
+      <a href="#" id="search" onclick="searchRepositories(); return false;">Search Repositories</a>
+    </div>
     <div class="flexbox-container">
-      <form onsubmit="searchRepositories(searchTerm); return false;">
-        Search Repositories: <input id="searchTerms" type="text"><br>
-      </form>
-      <a href="#" onclick="searchRepositories(this); return false;">Search Repositories</a>
+      <div>
         <h3>Repositories</h3>
         <div id="results"></div>
       </div>
