@@ -21,20 +21,15 @@ var renderSearchResult = function(data){
     <h2><a href="${data.html_url}">${data.name}</a></h2>
     <p><a href="#" data-repository="${data.name}" data-owner="${data.owner.login}" onclick="showCommits(this)">Show Commits</a></p>
     <p>${data.description}</p>
-    <span><img src="${data.owner.avatar_url}"></span>
   </div>
   `
 }
 
 var renderCommit = function(data){
-  debugger
     return `
   <div>
-
-    author login
-    avatar
     <h2>SHA: ${data.sha}</a></h2>
-    <p>Author: ${data.author.login}/p>
+    <p>Author: ${data.author.login}</p>
     <span><img src="${data.author.avatar_url}"></span>
   </div>
   `
