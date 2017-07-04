@@ -25,6 +25,11 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
+        <form onsubmit="event.preventDefault();searchRepositories()">
+          <input type="text" id="searchTerms">
+          <input type=submit value="Search">
+          <a onclick="searchRepositories()" href="javascript:void(0)">Search</a>
+        </form>
         <div id="results"></div>
       </div>
       <div>
@@ -32,7 +37,40 @@
         <div id="details"></div>
       </div>
     </div>
+    <script id="repositories-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each items}}
+          <li>
+            <p>
+              <a href="{{html_url}}">{{name}}</a>
+              <a href="javascript:void(0)" onclick="showCommits(this)" data-repository="{{name}}" data-owner="{{owner.login}}">Show Commits</a>
+            </p>
+            <p>{{description}}</p>
+            <p>
+              Created By:
+              <img src="{{owner.avatar_url}}" width="16" height="16"></img>
+              <a href="{{owner.html_url}}">{{owner.login}}</a>
+            </p>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+    <script id="commits-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each this}}
+          <li>
+            <p>{{commit.tree.sha}}</p>
+            <p>
+              Created By:
+              <img src="{{author.avatar_url}}" width="16" height="16"></img>
+              {{commit.author.name}} - {{author.login}}
+            </p>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
     <script src="jquery-3.1.0.min.js"></script>
+    <script src="handlebars.min.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
