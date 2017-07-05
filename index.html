@@ -16,11 +16,23 @@
       .flexbox-container > div:first-child {
         margin-right: 20px;
       }
+      .search {
+        margin-top: 5%;
+        text-align: center;
+        font-size: 3em;
+      }
+      input#searchTerms {
+        font-size: .7em;
+      }
     </style>
   </head>
   <body>
     <main id="main">
       <div id="errors"></div>
+      <div class="search">
+        <input type="text" id="searchTerms" placeholder="Search github"/>
+        <a href="#" onclick="searchRepositories()">Search</a>
+      </div>
     </main>
     <div class="flexbox-container">
       <div>
