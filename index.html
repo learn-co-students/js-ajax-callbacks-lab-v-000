@@ -21,6 +21,10 @@
   <body>
     <main id="main">
       <div id="errors"></div>
+      <form>
+        Search <input type="text" id="searchTerms">
+      </form>
+      <a href="#" onclick="searchRepositories()">Search Repositories</a>
     </main>
     <div class="flexbox-container">
       <div>
@@ -33,6 +37,29 @@
       </div>
     </div>
     <script src="jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <script src="index.js"></script>
+    <script type="text/x-handlebars-template" id="repository-template">
+      {{#each this}}
+      <a href="{{html_url}}">{{name}}</a> -
+      <a href="#" id="commits-link" onclick="showCommits(this)"
+      data-owner="{{owner.login}}" data-repo="{{name}}">Show Commits</a>
+      <p>{{description}}</p>
+      <ul>
+        <li><a href="{{owner.html_url}}">{{owner.login}}</a></li>
+        <img src={{owner.avatar_url}} height="64" width="64">
+      </ul>
+      {{/each}}
+    </script>
+    <script type="text/x-handlebars-template" id="commits-template">
+      <ul>
+        {{#each this}}
+        <li>{{sha}}</li>
+        <li>{{commit.author.name}}</li>
+        <li>{{author.login}}</li>
+        <li><img src="{{author.avatar_url}}" /></li>
+        {{/each}}
+      </ul>
+    </script>
   </body>
 </html>
