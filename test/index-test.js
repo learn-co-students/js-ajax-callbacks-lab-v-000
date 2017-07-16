@@ -56,7 +56,7 @@ describe('index.js', () => {
         searchRepositories()
         requests[0].respond(200, contentType, resultsData())
         expect(requests[0].url).toMatch(/https:\/\/api.github.com\/search\/repositories\?q=tetris/)
-        expect(window.$('#results').html()).toMatch(/Tetris/)
+        expect(window.$('#results').html()).toMatch(/tetris/)
       })
     })
 
