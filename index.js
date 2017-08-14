@@ -1,7 +1,6 @@
 var displayError = () => $('#errors').html("I'm sorry, there's been an error. Please try again.")
 
 function renderCommits(data){
-	console.log(data)
 	let results_array = []
 	for (var i = data.length - 1; i >= 0; i--) {
 		let commitInfo = data[i]

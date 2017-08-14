@@ -62,7 +62,18 @@ describe('index.js', () => {
 
     describe('showCommits', () => {
       it('calls the github commits api and displays results', () => {
-        const el = { dataset: { repository: "repo", owner: "owner" } }
+        //const el = { dataset: { repository: "repo", owner: "owner" } }
+        const el = `<div class="result">
+          <h4>Repository Info</h4>
+          <h5 id="name">repo</h5>
+          <a href="repo_link">repo_link</a>
+          <h5>repo_description</h5>
+          <a href="#" onclick="showCommits($(this).parent()); return false;">Show Commits</a>
+          <h4>Owner Info</h4>
+          <image src="$owner_img" class="owner_img"></image>
+          <h5 id="owner">owner</h5>
+          <h5>owner_link</h5>
+        </div>`
         showCommits(el)
         requests[0].respond(200, contentType, commitsData())
         expect(requests[0].url).toMatch(/https:\/\/api.github.com\/repos\/owner\/repo\/commits/)
