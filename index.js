@@ -45,7 +45,8 @@ function renderCommits(data) {
 };
 
 function displayCommit(commit) {
-  return `<h3>${commit.sha}</h3><p>${commit.commit.message}</p>`
+  return `<p>${commit.sha}</p>
+  <p>${commit.commit.message}</p>`
 }
 
 
