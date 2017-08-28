@@ -34,5 +34,17 @@
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+
+     <script id="search-results-template" type="text/x-handlebars-template">
+       <ul>
+         {{#each this}}
+         <li>
+           <h2><a href="{{html_url}}">{{name}}</a></h2>
+           <p>{{description}}</p>
+         </li>
+         {{/each}}
+       </ul>
+     </script>
   </body>
 </html>
