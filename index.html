@@ -23,6 +23,11 @@
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
+      <div class="search">
+        <h3>Search:</h3>
+        <input type="text" id="searchTerms"><br>
+        <a href="#" onClick="searchRepositories();">Search Repositories</a>
+      </div>
       <div>
         <h3>Repositories</h3>
         <div id="results"></div>
@@ -31,8 +36,37 @@
         <h3>Details</h3>
         <div id="details"></div>
       </div>
+      <script id="repository-template" type="text/x-handlebars-template">
+        <ul>
+         {{#each this}}
+           <li>
+             <h2><a href="{{html_url}}">{{name}}</a></h2>
+             <section>
+               <header><h4>Created By {{owner.login}}</h4></header>
+               <img src="{{owner.avatar_url}}" height="32" width="32">
+               <a href= "{{html_url}}">{{owner.login}}'s Profile</a>
+               <a href="#" onClick='showCommits({ dataset: {owner: "{{owner.login}}", repository: "{{name}}" } })'>Show Commits</a>
+             </section>
+             <p>{{description}}</p>
+            </li>
+          {{/each}}
+        </ul>
+      </script>
+      <script id="commits-template" type="text/x-handlebars-template">
+        <ul>
+         {{#each this}}
+           <li>
+             <p>SHA: {{sha}}</p>
+             <header><h4>Created By {{commit.author.login}}</h4></header>
+             <img src="{{commit.author.avatar_url}}" height="32" width="32">
+           </li>
+          {{/each}}
+        </ul>
+      </script>
     </div>
+
     <script src="jquery-3.1.0.min.js"></script>
+    <script src="handlebars.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
