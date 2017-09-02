@@ -1,36 +1,46 @@
-function handlebarsSetup() {
-  //put any handlebars setup in here
-  Handlebars.registerPartial("userDetails", $("#user-details-partial").html())
-}
-
 $(document).ready(function (){
-  handlebarsSetup();
 });
 
-var searchTerms = $('#searchTerms').val()
-var $results = $('#results');
 
 function searchRepositories(){
-  $.get("https://api.github.com/search/repositories?q=${searchTerms}", function(repos) {
-    $.each(repos.items, function(i, repodata){
-      $results.append('<li> ' + repodata.name +  '</li>');
-      $results.append('<li> ' + repodata.full_name +  '</li>');
-    });
-  }).fail(function(error){
-      console.log('An error occured:' + error)
-  });
-};
+  const searchTerms = $('#searchTerms').val()
 
-function displayError() {
-  $('#errors').html("I'm sorry, there's been an error. Please try again.")
+  $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
+    $('#results').html(displayRepositories(data));
+  }).fail( error => {
+    console.log(error)
+  });
 }
 
-// <!-- JS built in function for "fetching" api requests -->
-// fetch("https://api.github.com/search/repositories?q=${searchTerms}")
-//   .then(function(res) {
-//     return res.json()
-//   })
-//   .then(function(repos) {
-//     console.log(repos.items)
-//   })
-  
+var displayRepositories = (repos) => repos.items.map( (repo) => displayRepository(repo) )
+
+
+function displayRepository(result){
+console.log(result)
+  return `
+        <div>
+          <h2><a href=${result.html_url} target="_blank">${result.name}</a></h2>
+          <p>${result.description}</p>
+          <p><a href="#" data-repository="${result.name}" data-owner="${result.owner.login}" onclick="showCommits(this)">Show Commits</a>
+        </div>
+        <hr>
+      `
+}
+
+var showCommits = (el) => {
+
+  $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data => {
+    $('#details').html(renderCommits(data));
+  }).fail( error => {
+    console.log(error)
+  });
+}
+
+var renderCommits = (data) => {
+  let result = data.map((commit)=>renderCommit(commit)).join('')
+  return `<ul>${result}</ul>`
+}
+
+var renderCommit = (commit) => {
+  return `<li><h3>${commit.sha}</h3><p>${commit.commit.message}</p></li>`
+}
