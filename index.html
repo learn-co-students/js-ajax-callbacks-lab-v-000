@@ -23,10 +23,9 @@
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
-      <form onsubmit="searchRepositories(); return false">
-        <input type="text" id="searchTerms">
-        <input type="submit" value="Search Repositories">
-      </form>
+
+      <input type="text" id="searchTerms">
+      <a href="#" onclick="searchRepositories()">Search</a>
 
       <div>
         <h3>Repositories</h3>
@@ -36,6 +35,7 @@
         <h3>Details</h3>
         <div id="details"></div>
       </div>
+      <div id="errors"></div>
     </div>
     <script src="jquery-3.1.0.min.js"></script>
     <script src="index.js"></script>
