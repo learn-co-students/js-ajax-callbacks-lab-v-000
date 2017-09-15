@@ -32,6 +32,16 @@ function displayError(){
   $("#errors").append("I'm sorry, there's been an error. Please try again.")
 }
 
-// function showCommits(el){
-//   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`=> )
-// }
+function showCommits(el){
+  $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data => {
+    renderCommits(data)
+  })
+}
+
+function renderCommits(commits){
+  commits.forEach(function(commit){
+      $('#details').append(
+        `<li><h3>${commit.sha}</h3>
+        <p>${commit.commit.message}</p></li>`)
+  })
+}
