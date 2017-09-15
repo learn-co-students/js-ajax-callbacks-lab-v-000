@@ -1,18 +1,31 @@
 $(document).ready(function (){
+  bindClickListeners()
 });
 
+function bindClickListeners() {
+  $('form').on('submit', function(e) {
+    e.preventDefault()
+    searchRepositories()
+  })
+}
 
-var renderSearchResults = (data) => data.items.map( result => renderSearchResult(result))
-
-var searchRepositories = () => {
+function searchRepositories(){
   const searchTerms = $('#searchTerms').val()
+  console.log(searchTerms)
   $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
-      $('#results').html(renderSearchResults(data))
+      displayRepository(data.items)
     })
 }
 
-function displayRepository(result){
 
+function displayRepository(results){
+  results.forEach(function(result){
+    $('#results').append(`
+                          <h1><a href='${result.html_url}'>${result.name}</a></h1>
+
+                          <p>${result.description}</p>
+                        `)
+  })
 }
 
 // function displayError(){
