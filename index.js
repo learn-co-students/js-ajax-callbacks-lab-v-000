@@ -1,49 +1,56 @@
 $(document).ready(function (){
 });
 
-function searchRepositories() {
-  query = `https:api.github.com/search/repositories?q=${document.selectElementById("searchTerms").value}`
-  $.get(query, function(response) {
-    var repoList = response.items.forEach((repo) => {
-      document.getElementById("results").innerHTML =
-      `
-      <h1>${repo.name}</h1>
-      <p>${repo.description}</p>
-      <ul>
-        <li>${repo.html_url}</li>
-        <li><a href="${repo.owner.html_url}">${repo.owner.login}</a></li>
-        <li><img src="${repo.owner.avatar_url}"></li>
-        <li><a href="#" data-repository="${repo.name}" data-owner="${repo.owner.login}" onclick="showCommits(); return false">Show Commits</a></li>
-      </ul>
-      `
-    })
-  }).fail(function(error) {
-    displayError(error);
-  });
+var searchRepositories = () => {
+  const searchTerms = $('#searchTerms').val()
+  query = `https:api.github.com/search/repositories?q=${searchTerms}`
+  $.get(query, response => {
+      $("#results").html(renderSearchResults(response))
+    }).fail(error => {
+      displayError();
+    });
+}
+
+var renderSearchResults = (results) => {
+  results.items.map(result => renderSearchResult(result))
+}
+
+var renderSearchResult = (result) => {
+  return `
+      <div>
+        <h2><a href="${result.html_url}">${result.name}</a></h2>
+        <p><a href="#" data-repository="${result.name}" data-owner="${result.owner.login}" onclick="showCommits(this)">Show Commits</a></p>
+        <p>${result.description}</p>
+      </div>
+      <hr>
+    `
 }
 
 function showCommits(el) {
   var owner = el.dataset.owner
   var repository = el.dataset.repository
   query = `https:api.github.com/search/${owner}/${repository}/commits`
-  $.get(query, function(response) {
-    var commitList = response.items.forEach((commit) => {
-      document.getElementById("details").innerHTML =
-      `
-      <h3>${commit.SHA}</h3>
-      <p>${commit.commit.message}</p>
-      <ul>
-        <li>${commit.committer.name}</li>
-        <li>${commit.committer.login}</li>
-        <li><img src="${commit.committer.avatar_url}"></li>
-      </ul>
-      `
-    })
-  }).fail(function(error) {
-    displayError(error);
+  $.get(query, response => {
+    $("#details").html(renderCommits(response))
+  }).fail(error => {
+    displayError();
   });
 }
 
+var renderCommits = (response) => {
+  var result = response.map((commit) => renderCommit(commit)).join('')
+  return `<ul>${result}</ul>`
+}
+
+var renderCommit = (commit) => {
+  return `
+    <li><h3>${commit.sha}</h3></li>
+    <li><p>${commit.commit.message}</p></li>
+    <li>${commit.committer.login} - ${commit.committer.name}</li>
+    <li><img src="${commit.committer.avatar_url}"></li>
+  `
+}
+
 function displayError(error){
-  document.getElementById("errors").innerHTML = "I'm sorry, there's been an error. Please try again."
+  $('#errors').html("I'm sorry, there's been an error. Please try again.");
 }
