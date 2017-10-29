@@ -1,7 +1,6 @@
 function searchRepositories() {
     const searchTerms = document.getElementById("searchTerms").value.split(' ').join('+');
     let githubAPI = `https://api.github.com/search/repositories?q=${searchTerms}`;
-    console.log(githubAPI);
     // AJAX call
     $.get(githubAPI, (response) => {
         let results = response.items;
@@ -15,7 +14,7 @@ function searchRepositories() {
                 ${result.owner.login}'s 
                 <a href="${result.owner.url}">profile page</a>
                 </p>
-            <h4><a href="#" onclick="showCommits('${result.commits_url.slice(0, -6)}', '${divId}');return false;">Show Commits</a></h4>
+            <h4><a href="#" onclick="showCommits({dataset: {owner: '${result.owner.login}', repository: '${result.name}' }});return false;">Show Commits</a></h4>
             <hr>
             </div>`
         });
@@ -25,13 +24,16 @@ function searchRepositories() {
     });
 };
 
-function showCommits(commitsURL, divId) {
-    let commitsAPI = commitsURL;
-    console.log(commitsAPI);
+// { dataset: { repository: "repo", owner: "owner" } }
+function showCommits(args) {
+    if (!args.dataset) throw new Error('I expected a dataset attribute');
+    if (!args.dataset.owner) throw new Error('I expected a dataset.owner attribute');
+    if (!args.dataset.repository) throw new Error('I expected a dataset.repository attribute');
+    let { dataset: { repository, owner } } = args;
+    let commitsAPI = `https://api.github.com/repos/${owner}/${repository}/commits`;
 
     // AJAX GET request
     $.get(commitsAPI, (response) => {
-        console.log(response)
         let commitsStr = response.map(commit => {
             return `<li>
                 <p>SHA: ${commit.sha}</p>
