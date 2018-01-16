@@ -18,8 +18,12 @@
       }
     </style>
   </head>
+
   <body>
     <main id="main">
+    <input type="text" id="searchTerms"></input>
+    <a href="#" onclick="searchRepositories();" >Search Repositories</a>
+
       <div id="errors"></div>
     </main>
     <div class="flexbox-container">
@@ -32,7 +36,54 @@
         <div id="details"></div>
       </div>
     </div>
+
+
     <script src="jquery-3.1.0.min.js"></script>
     <script src="index.js"></script>
+
+    <script id="results-template" type="text/template">
+      <!--       Include:
+      repository name, [x]
+      description, and a [x]
+      link to the HTML URL [x]
+      user details [x]
+      -->
+      {{#each items }}
+        <!--repository -->
+        <h2><a href="{{ html_url }}">{{ name }}</a></h2>     
+        <p> {{ description }}
+        <br>
+        <a href="#" onclick="showCommits(this);" data-repository="{{ name }}" data-owner="{{ owner.login }}" >Show Commits</a>
+        <!-- repo owner  partial goes here-->
+        {{> userDetails owner }}
+      {{/each}}
+    </script>
+
+    <script id="user-details-partial" type="text/template">
+      <!--       Include:
+      owner login, [x]
+      owner avatar as an image, and a [x]
+      link to the owner's profile page.[x] 
+      -->
+      <a href="{{ url }}">{{ login }}</a> 
+      <img width="32px" height="32px" src="{{ avatar_url }}">
+    </script>
+
+    <script id="show-commits-template" type="text/template">
+      <!--       Include:
+      commit message [x]
+      commit sha [x]
+      commit user details[x] 
+      -->
+      {{#each this}}
+        {{sha}}
+        {{commit.message}}
+        <br>
+        {{>userDetails author}}
+        <br>
+      {{/each}}  
+    </script>
+    
+    </script>
   </body>
 </html>
