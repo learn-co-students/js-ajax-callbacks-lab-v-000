@@ -1,10 +1,4 @@
 
-$(document).ready(function() {
-  // $.get("index.html", function(response) {
-  //   $("#searchTerms").html(response)
-  // })
-});
-
 var displayError = () => $('#errors').html("I'm sorry, there's been an error. Please try again.")
 
 function searchRepositories() {
@@ -28,17 +22,27 @@ var renderSearchResult = (result) => {
   `
 }
 
-// function showRepositories(event, data) {
-//   var repos = JSON.parse(this.responseText)
-//   const repoList = `<ul>${repos
-//     .map(
-//       r =>
-//         "<li>" +
-//         r.name +
-//         ' - <a href="#" data-repo="' +
-//         r.name +
-//         '" onclick="getCommits(this)">Get Commits</a></li>'
-//     )
-//     .join("")}</ul>`
-//   document.getElementById("results").innerHTML = repoList
-// }
+var renderCommit = commit => {
+  return `<li><h3>${commit.sha}</h3><p>${commit.commit.message}</p></li>`;
+};
+
+var renderCommits = (data) => {
+  let result = data.map((commit) => renderCommit(commit)).join('')
+  return `<ul>${result}</ul>`
+}
+
+
+
+var showCommits = (el) => {
+  $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data => {
+    $('#details').html(renderCommits(data))
+  }).fail(error => {
+    displayError()
+  })
+}
+
+$(document).ready(function() {
+  // $.get("index.html", function(response) {
+  //   $("#searchTerms").html(response)
+  // })
+});

@@ -24,12 +24,12 @@
     </main>
     <div class="flexbox-container">
       <div>
-        <h3>Repositories</h3>
-        <form onsubmit="searchRepositories(); return false;">
-          <input type="text" id="searchTerms"><br>
+        <form onsubmit="searchRepositories();">
+          <p>Search Term: <input type="text" id="searchTerms"></p>
           <input type="submit">
         </form>
-        <a href="#" onclick="searchRepositories()">Search Repositories</a>
+        <h3>Repositories</h3>
+        <a href="#" onclick="searchRepositories()">Search</a>
         <div id="results"></div>
       </div>
       <div>
